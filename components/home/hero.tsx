@@ -81,31 +81,34 @@ export function Hero() {
         style={{ scale: backgroundScale, opacity: backgroundOpacity }}
         className="absolute inset-0 z-0"
       >
-        {/* Carousel Container */}
-        <div className="relative w-full h-full" ref={emblaRef}>
-          <div className="flex h-full">
+        {/* Carousel Viewport Wrapper - Added overflow-hidden */}
+        <div className="relative w-full h-full overflow-hidden" ref={emblaRef}>
+          {/* Carousel Track - Added backface-visibility hiding */}
+          <div className="flex h-full [backface-visibility:hidden]">
             {SLIDES.map((slide, index) => (
               <div
                 key={slide.id}
-                className="relative flex-[0_0_100%] h-full min-w-0"
+                // Slide Container - Added transform-gpu and backface-visibility to eliminate gaps
+                className="relative flex-[0_0_100%] h-full min-w-0 transform-gpu [backface-visibility:hidden]"
               >
                 <Image
                   src={slide.src}
                   alt={slide.alt}
                   fill
-                  className={`object-cover transition-all duration-1000 ${
+                  // Swapped transition-all for transition-transform for better rendering performance
+                  className={`object-cover transition-transform duration-1000 ${
                     index === activeSlide ? 'scale-105' : 'scale-100'
                   }`}
                   priority={index === 0}
                   quality={100}
                 />
                 {/* Sophisticated Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/40 to-black/80" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90" />
               </div>
             ))}
           </div>
         </div>
+            <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/40 to-black/80" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90" />
 
         {/* Animated Grain Texture */}
         <div 
@@ -173,7 +176,7 @@ export function Hero() {
             className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-3"
           >
             <Sparkles className="w-5 h-5 text-primary" />
-            <span className="text-white/90 text-sm font-medium tracking-wider uppercase">
+            <span className="text-white text-sm font-semibold tracking-wider uppercase">
               MEDICARE LINK
             </span>
             <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
@@ -193,7 +196,6 @@ export function Hero() {
                 <span className="relative z-10 bg-primary bg-clip-text text-transparent">
                   With Dignity & Respect
                 </span>
-               
               </span>
             </h1>
           </motion.div>
