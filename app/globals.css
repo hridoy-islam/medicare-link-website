@@ -7,10 +7,11 @@
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     
-    --primary:233 57% 31%;
+    /* --primary:233 57% 31%; */
+    --primary:1 100% 34%;
     --primary-foreground: 210 40% 98%;
     
-    --secondary: 359 99 34;
+    --secondary: 233 57% 31%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     --card: 0 0% 100%;

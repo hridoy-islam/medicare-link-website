@@ -51,13 +51,13 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative bg-gradient-to-b from-slate-900 to-slate-950 text-white pt-20 pb-10 overflow-hidden">
+    <footer className="relative bg-gradient-to-br from-primary to-red-950  text-white pt-20 pb-10 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5" />
       
       {/* Decorative Elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-red-500/10 rounded-full blur-3xl" />
       
       <div className="container relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
@@ -65,22 +65,22 @@ export function Footer() {
           {/* Brand Column */}
           <div className="space-y-6">
             <Link href="/" className="block relative h-16 w-56">
-              <Image
-                src="/medicare-link.webp"
-                alt="Medicare Link - Trusted Healthcare Services"
-                fill
-                className="object-contain object-left scale-120"
-                priority
-              />
+             <Image
+  src="/medicare-link-white.png"
+  alt="Medicare Link - Trusted Healthcare Services"
+  fill
+  className="object-contain object-left scale-120 brightness-0 invert transition-all duration-500"
+  priority
+/>
             </Link>
-            <p className="text-slate-300 text-[15px] leading-relaxed font-medium pr-4">
+            <p className="text-slate-100 text-[15px] leading-relaxed font-medium pr-4">
               Your trusted partner for professional cleaning and healthcare services. 
               We provide compassionate care and exceptional cleaning solutions tailored to your needs.
             </p>
             
             {/* Quick Links in Brand Column for Mobile */}
             <div className="space-y-3">
-              <h4 className="text-white font-bold text-lg tracking-wider uppercase relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-primary">
+              <h4 className="text-white font-bold text-lg tracking-wider uppercase relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-white/30">
                 Quick Links
               </h4>
               <ul className="space-y-2.5">
@@ -88,9 +88,9 @@ export function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="group flex items-center gap-2 text-slate-300 hover:text-white transition-all duration-300"
+                      className="group flex items-center gap-2 text-slate-100 hover:text-white transition-all duration-300"
                     >
-                      <ChevronRight size={14} className="text-primary group-hover:translate-x-1 transition-transform" />
+                      <ChevronRight size={14} className="text-white/50 group-hover:translate-x-1 group-hover:text-white transition-all" />
                       <span className="text-[15px] font-medium">
                         {link.label}
                       </span>
@@ -103,7 +103,7 @@ export function Footer() {
 
           {/* Cleaning Services Column */}
           <div className="space-y-6">
-            <h4 className="text-white font-bold text-lg tracking-wider uppercase relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-primary">
+            <h4 className="text-white font-bold text-lg tracking-wider uppercase relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-white/30">
               Cleaning Services
             </h4>
             <ul className="space-y-2.5">
@@ -111,9 +111,9 @@ export function Footer() {
                 <li key={service.href}>
                   <Link
                     href={service.href}
-                    className="group flex items-center gap-2 text-slate-300 hover:text-white transition-all duration-300"
+                    className="group flex items-center gap-2 text-slate-100 hover:text-white transition-all duration-300"
                   >
-                    <ChevronRight size={14} className="text-primary group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight size={14} className="text-white/50 group-hover:translate-x-1 group-hover:text-white transition-all" />
                     <span className="text-[15px] font-medium">
                       {service.label}
                     </span>
@@ -125,7 +125,7 @@ export function Footer() {
 
           {/* Care Services Column */}
           <div className="space-y-6">
-            <h4 className="text-white font-bold text-lg tracking-wider uppercase relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-primary">
+            <h4 className="text-white font-bold text-lg tracking-wider uppercase relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-white/30">
               Care Services
             </h4>
             <ul className="space-y-2.5">
@@ -133,9 +133,9 @@ export function Footer() {
                 <li key={service.href}>
                   <Link
                     href={service.href}
-                    className="group flex items-center gap-2 text-slate-300 hover:text-white transition-all duration-300"
+                    className="group flex items-center gap-2 text-slate-100 hover:text-white transition-all duration-300"
                   >
-                    <ChevronRight size={14} className="text-primary group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight size={14} className="text-white/90 group-hover:translate-x-1 group-hover:text-white transition-all" />
                     <span className="text-[15px] font-medium">
                       {service.label}
                     </span>
@@ -147,16 +147,16 @@ export function Footer() {
 
           {/* Contact Info Column */}
           <div className="space-y-6">
-            <h4 className="text-white font-bold text-lg tracking-wider uppercase relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-primary">
+            <h4 className="text-white font-bold text-lg tracking-wider uppercase relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-white/30">
               Get In Touch
             </h4>
             <ul className="space-y-5">
               <li className="flex gap-4 group">
-                <div className="mt-1 w-11 h-11 shrink-0 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-primary group-hover:border-primary group-hover:shadow-lg group-hover:shadow-primary/25">
+                <div className="mt-1 w-11 h-11 shrink-0 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-white/20 group-hover:border-white/30 group-hover:shadow-lg">
                   <MapPin size={20} className="text-white" />
                 </div>
                 <div>
-                  <p className="text-slate-400 font-semibold mb-1 uppercase tracking-wider text-[11px]">Location</p>
+                  <p className="text-white font-semibold mb-1 uppercase tracking-wider text-[11px]">Location</p>
                   <span className="text-[14px] font-medium text-slate-200 leading-relaxed">
                     {contactInfo.address}
                   </span>
@@ -164,14 +164,14 @@ export function Footer() {
               </li>
               
               <li className="flex gap-4 group">
-                <div className="mt-1 w-11 h-11 shrink-0 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-primary group-hover:border-primary group-hover:shadow-lg group-hover:shadow-primary/25">
+                <div className="mt-1 w-11 h-11 shrink-0 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-white/20 group-hover:border-white/30 group-hover:shadow-lg">
                   <Phone size={20} className="text-white" />
                 </div>
                 <div>
-                  <p className="text-slate-400 font-semibold mb-1 uppercase tracking-wider text-[11px]">Phone</p>
+                  <p className="text-white font-semibold mb-1 uppercase tracking-wider text-[11px]">Phone</p>
                   <a 
                     href={`tel:${contactInfo.phone}`}
-                    className="text-[14px] font-medium text-slate-200 hover:text-primary transition-colors"
+                    className="text-[14px] font-medium text-slate-200 hover:text-white transition-colors"
                   >
                     {contactInfo.phone}
                   </a>
@@ -179,14 +179,14 @@ export function Footer() {
               </li>
               
               <li className="flex gap-4 group">
-                <div className="mt-1 w-11 h-11 shrink-0 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-primary group-hover:border-primary group-hover:shadow-lg group-hover:shadow-primary/25">
+                <div className="mt-1 w-11 h-11 shrink-0 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-white/20 group-hover:border-white/30 group-hover:shadow-lg">
                   <Mail size={20} className="text-white" />
                 </div>
                 <div>
-                  <p className="text-slate-400 font-semibold mb-1 uppercase tracking-wider text-[11px]">Email</p>
+                  <p className="text-white font-semibold mb-1 uppercase tracking-wider text-[11px]">Email</p>
                   <a 
                     href={`mailto:${contactInfo.email}`}
-                    className="text-[14px] font-medium text-slate-200 hover:text-primary transition-colors"
+                    className="text-[14px] font-medium text-slate-200 hover:text-white transition-colors"
                   >
                     {contactInfo.email}
                   </a>
@@ -199,25 +199,25 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-slate-400 text-center md:text-left">
+            <p className="text-sm text-white text-center md:text-left">
               &copy; {currentYear} Medicare Link. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
               <Link 
                 href="/privacy-policy" 
-                className="text-sm text-slate-400 hover:text-white transition-colors"
+                className="text-sm text-white hover:text-white transition-colors"
               >
                 Privacy Policy
               </Link>
               <Link 
                 href="/terms-of-service" 
-                className="text-sm text-slate-400 hover:text-white transition-colors"
+                className="text-sm text-white hover:text-white transition-colors"
               >
                 Terms of Service
               </Link>
               <Link 
                 href="/cookie-policy" 
-                className="text-sm text-slate-400 hover:text-white transition-colors"
+                className="text-sm text-white hover:text-white transition-colors"
               >
                 Cookie Policy
               </Link>
