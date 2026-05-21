@@ -177,7 +177,7 @@ export function LiveInCareContent() {
           {/* Right Side - Image */}
           <div className="relative h-[400px] md:h-[450px] w-full rounded-2xl overflow-hidden shadow-lg">
             <Image
-              src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800&h=600&fit=crop"
+              src="https://images.unsplash.com/photo-1773227055624-07b515ba87c5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="Live in care at home"
               fill
               className="object-cover"

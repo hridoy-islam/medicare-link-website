@@ -70,97 +70,102 @@ export function SpringCleaningContent() {
   }, []);
 
   const cleaningServices = [
-    {
-      id: "domestic-cleaning",
-      icon: Home,
-      title: "DOMESTIC CLEANING SERVICE",
-      description: "Regular domestic cleaning to keep your home spotless and organized.",
-      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=300&fit=crop",
-      color: "from-blue-500 to-blue-600"
-    },
-    {
-      id: "end-of-tenancy",
-      icon: DoorClosed,
-      title: "END OF TENANCY CLEANING",
-      description: "Thorough cleaning to meet landlord and agency standards for deposit return.",
-      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop",
-      color: "from-purple-500 to-purple-600"
-    },
-    {
-      id: "event-party",
-      icon: PartyPopper,
-      title: "EVENT/PARTY CLEANING",
-      description: "Pre and post-event cleaning so you can focus on enjoying your occasion.",
-      image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400&h=300&fit=crop",
-      color: "from-pink-500 to-pink-600"
-    },
-    {
-      id: "home-maid",
-      icon: Sparkles,
-      title: "HOME MAID SERVICE",
-      description: "Professional home making services for a perfectly maintained household.",
-      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=300&fit=crop",
-      color: "from-teal-500 to-teal-600"
-    },
-    {
-      id: "housekeeping",
-      icon: Sofa,
-      title: "HOUSEKEEPING SERVICE",
-      description: "Daily or weekly housekeeping to keep your home running smoothly.",
-      image: "https://images.unsplash.com/photo-1584622781564-1d987f7333c1?w=400&h=300&fit=crop",
-      color: "from-green-500 to-green-600"
-    },
-    {
-      id: "moving-cleaning",
-      icon: Move,
-      title: "MOVING IN/MOVE OUT CLEANING",
-      description: "Deep cleaning for properties when moving in or out.",
-      image: "https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=400&h=300&fit=crop",
-      color: "from-orange-500 to-orange-600"
-    },
-    {
-      id: "one-off-cleaning",
-      icon: Calendar,
-      title: "ONE OFF CLEANING SERVICE",
-      description: "Single deep clean for special occasions or seasonal refresh.",
-      image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&h=300&fit=crop",
-      color: "from-red-500 to-red-600",
-      link: "/services/one-off-cleaning-service"
-    },
-    {
-      id: "spring-cleaning",
-      icon: Flower2,
-      title: "SPRING CLEANING SERVICE",
-      description: "Comprehensive seasonal deep clean to refresh your entire home.",
-      image: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=400&h=300&fit=crop",
-      color: "from-emerald-500 to-emerald-600"
-    },
-    {
-      id: "office-cleaning",
-      icon: Briefcase,
-      title: "OFFICE CLEANING SERVICE",
-      description: "Professional cleaning for commercial and office spaces.",
-      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop",
-      color: "from-indigo-500 to-indigo-600"
-    },
-    {
-      id: "weekly-cleaning",
-      icon: Clock,
-      title: "WEEKLY CLEANING SERVICE",
-      description: "Regular weekly cleaning to maintain a consistently clean home.",
-      image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400&h=300&fit=crop",
-      color: "from-cyan-500 to-cyan-600"
-    },
-  ];
+  {
+    id: "domestic-cleaning",
+    icon: Home,
+    title: "DOMESTIC CLEANING SERVICE",
+    description: "Regular domestic cleaning to keep your home spotless and organized.",
+    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=300&fit=crop",
+    color: "from-blue-500 to-blue-600",
+    link: "/services/domestic-cleaning-service",
+  },
+  {
+    id: "end-of-tenancy",
+    icon: DoorClosed,
+    title: "END OF TENANCY CLEANING",
+    description: "Thorough cleaning to meet landlord and agency standards for deposit return.",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop",
+    color: "from-purple-500 to-purple-600",
+    link: "/services/end-of-tenancy-cleaning",
+  },
+  {
+    id: "event-party",
+    icon: PartyPopper,
+    title: "EVENT/PARTY CLEANING",
+    description: "Pre and post-event cleaning so you can focus on enjoying your occasion.",
+    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400&h=300&fit=crop",
+    color: "from-pink-500 to-pink-600",
+    link: "/services/event-party-cleaning",
+  },
+  {
+    id: "home-maid",
+    icon: Sparkles,
+    title: "HOME MAID SERVICE",
+    description: "Professional home making services for a perfectly maintained household.",
+    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=300&fit=crop",
+    color: "from-teal-500 to-teal-600",
+    link: "/services/home-maid-service",
+  },
+  {
+    id: "housekeeping",
+    icon: Sofa,
+    title: "HOUSEKEEPING SERVICE",
+    description: "Daily or weekly housekeeping to keep your home running smoothly.",
+    image: "https://images.unsplash.com/photo-1584622781564-1d987f7333c1?w=400&h=300&fit=crop",
+    color: "from-green-500 to-green-600",
+    link: "/services/housekeeping-service",
+  },
+  {
+    id: "moving-cleaning",
+    icon: Move,
+    title: "MOVING IN/MOVE OUT CLEANING",
+    description: "Deep cleaning for properties when moving in or out.",
+    image: "https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=400&h=300&fit=crop",
+    color: "from-orange-500 to-orange-600",
+    link: "/services/move-in-move-out-cleaning",
+  },
+  {
+    id: "one-off-cleaning",
+    icon: Calendar,
+    title: "ONE OFF CLEANING SERVICE",
+    description: "Single deep clean for special occasions or seasonal refresh.",
+    image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&h=300&fit=crop",
+    color: "from-red-500 to-red-600",
+    link: "/services/one-off-cleaning-service",
+  },
+  {
+    id: "spring-cleaning",
+    icon: Flower2,
+    title: "SPRING CLEANING SERVICE",
+    description: "Comprehensive seasonal deep clean to refresh your entire home.",
+    image: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=400&h=300&fit=crop",
+    color: "from-emerald-500 to-emerald-600",
+    link: "/services/spring-cleaning",
+  },
+  {
+    id: "office-cleaning",
+    icon: Briefcase,
+    title: "OFFICE CLEANING SERVICE",
+    description: "Professional cleaning for commercial and office spaces.",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop",
+    color: "from-indigo-500 to-indigo-600",
+    link: "/services/office-cleaning-service",
+  },
+  {
+    id: "weekly-cleaning",
+    icon: Clock,
+    title: "WEEKLY CLEANING SERVICE",
+    description: "Regular weekly cleaning to maintain a consistently clean home.",
+    image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400&h=300&fit=crop",
+    color: "from-cyan-500 to-cyan-600",
+    link: "/services/weekly-cleaning",
+  },
+];
 
-  const handleLearnMore = (serviceId: string, serviceTitle: string) => {
-    if (serviceId === "one-off-cleaning") {
-      router.push("/services/one-off-cleaning-service");
-    } else if (serviceId === "spring-cleaning") {
-      return;
-    } else {
-      router.push(`/services/cleaning-support/${serviceId}`);
-    }
+  const handleLearnMore = (serviceId: string, serviceLink: string) => {
+
+      router.push(`${serviceLink}`);
+    
   };
 
   return (
@@ -209,7 +214,7 @@ export function SpringCleaningContent() {
             <div
               key={service.id}
               ref={(el) => { cardsRef.current[index] = el; }}
-              onClick={() => handleLearnMore(service.id, service.title)}
+              onClick={() => handleLearnMore(service.id, service.link)}
               className="group cursor-pointer bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               {/* Image Section */}
@@ -238,7 +243,7 @@ export function SpringCleaningContent() {
                 <button 
                   onClick={(e) => {
                     e.stopPropagation();
-                    handleLearnMore(service.id, service.title);
+                    handleLearnMore(service.id, service.link);
                   }}
                   className="inline-flex items-center gap-1 text-primary text-sm font-semibold hover:gap-2 transition-all duration-300"
                 >

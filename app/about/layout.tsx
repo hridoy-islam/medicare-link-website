@@ -1,55 +1,54 @@
 import type { Metadata } from "next";
 
-
-
 export const metadata: Metadata = {
   title: "About Us",
 
   description:
-    "Learn more about Cyberpeers — a UK-based digital marketing and technology agency helping brands grow through web development, SEO, branding, UI/UX design, and performance marketing.",
+    "Learn more about Medicare Link — a UK-based healthcare and home care service provider delivering compassionate care, staffing solutions, cleaning support, and personalized assistance to individuals and families across the UK.",
 
   keywords: [
-    "About Cyberpeers",
-    "Cyberpeers Team",
-    "Digital Marketing Experts UK",
-    "Web Development Agency UK",
-    "SEO Specialists",
-    "Performance Marketing Agency",
-    "Creative Tech Team",
-    "Brand Strategy Agency",
+    "About Medicare Link",
+    "Medicare Link Team",
+    "Healthcare Services UK",
+    "Home Care Agency UK",
+    "Caregivers UK",
+    "Elderly Care Support",
+    "Healthcare Staffing UK",
+    "Cleaning Support Services",
+    "Personal Care Services",
+    "Compassionate Care UK",
   ],
 
   openGraph: {
-    title: "About Cyberpeers | Digital Marketing & Tech Agency",
+    title: "About Medicare Link | Trusted Healthcare & Home Care Services",
     description:
-      "Discover the team, mission, and vision behind Cyberpeers. We combine technology, creativity, and strategy to help businesses scale with measurable results.",
-    url: "https://cyberpeers.co.uk/about",
-    siteName: "Cyberpeers",
+      "Discover Medicare Link’s mission, values, and dedicated care team. We provide professional healthcare, home care, staffing, and cleaning support services across the UK.",
+    url: "https://www.medicarelink.co.uk/about",
+    siteName: "Medicare Link",
     images: [
       {
-        url: "/logo.png",
+        url: "/medicare-link.webp",
         width: 1200,
         height: 630,
-        alt: "About Cyberpeers Digital Marketing & Tech Agency",
+        alt: "About Medicare Link Healthcare Services",
       },
     ],
-    locale: "en_US",
+    locale: "en_GB",
     type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "About Cyberpeers | Digital Marketing & Tech Agency",
+    title: "About Medicare Link | Healthcare & Home Care Services UK",
     description:
-      "Meet the experts behind Cyberpeers — delivering innovative web, SEO, branding, and marketing solutions.",
-    images: ["/logo.png"],
+      "Meet the team behind Medicare Link — delivering compassionate healthcare, home care, and staffing solutions across the UK.",
+    images: ["/medicare-link.webp"],
   },
 
   alternates: {
-    canonical: "https://cyberpeers.co.uk/about",
+    canonical: "https://www.medicarelink.co.uk/about",
   },
 };
-
 
 export default function AboutLayout({
   children,

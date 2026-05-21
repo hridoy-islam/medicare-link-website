@@ -4,47 +4,49 @@ export const metadata: Metadata = {
   title: "Our Services",
 
   description:
-    "Explore Cyberpeers' full range of digital services including web development, SEO, branding, UI/UX design, and performance marketing tailored for UK businesses.",
+    "Explore Medicare Link’s professional healthcare and home care services across the UK, including home care support, healthcare staffing, cleaning services, and personalized care solutions designed to meet every individual’s needs.",
 
   keywords: [
-    "Cyberpeers Services",
-    "Digital Marketing Services UK",
-    "Web Development Agency UK",
-    "SEO Services UK",
-    "Performance Marketing Agency",
-    "Branding Agency UK",
-    "UI UX Design Services",
-    "Full Service Tech Agency",
+    "Medicare Link Services",
+    "Healthcare Services UK",
+    "Home Care Services",
+    "Care Agency UK",
+    "Healthcare Staffing Services",
+    "Elderly Care Support",
+    "Cleaning Support Services UK",
+    "Personal Care Services",
+    "Professional Caregivers UK",
+    "Compassionate Care Services",
   ],
 
   openGraph: {
-    title: "Our Services | Cyberpeers Digital Marketing & Tech Agency",
+    title: "Our Services | Medicare Link Healthcare & Home Care UK",
     description:
-      "Discover our expert digital solutions — web development, SEO, branding, UI/UX design, and performance marketing designed to scale modern businesses.",
-    url: "https://cyberpeers.co.uk/services",
-    siteName: "Cyberpeers",
+      "Discover Medicare Link’s full range of healthcare, home care, staffing, and cleaning support services across the UK. Compassionate, professional, and reliable care tailored to your needs.",
+    url: "https://www.medicarelink.co.uk/services",
+    siteName: "Medicare Link",
     images: [
       {
-        url: "/logo.png",
+        url: "/medicare-link.webp",
         width: 1200,
         height: 630,
-        alt: "Cyberpeers Digital Services",
+        alt: "Medicare Link Services Overview",
       },
     ],
-    locale: "en_US",
+    locale: "en_GB",
     type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Our Services | Cyberpeers",
+    title: "Our Services | Medicare Link UK",
     description:
-      "Web development, SEO, branding & performance marketing services for ambitious UK businesses.",
-    images: ["/logo.png"],
+      "Explore healthcare, home care, staffing, and cleaning services provided by Medicare Link across the UK.",
+    images: ["/medicare-link.webp"],
   },
 
   alternates: {
-    canonical: "https://cyberpeers.co.uk/services",
+    canonical: "https://www.medicarelink.co.uk/services",
   },
 };
 

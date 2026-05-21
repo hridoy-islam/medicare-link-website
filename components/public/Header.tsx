@@ -126,6 +126,10 @@ export function Header() {
       label: "Acquired Brain Injury",
       href: "/services/acquired-brain-injury",
     },
+    {
+      label: "Learning Disability Care",
+      href: "/services/learning-disability-care",
+    },
   ];
 
   const handleServiceClick = () => {

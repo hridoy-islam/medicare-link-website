@@ -81,11 +81,11 @@ export function DomiciliaryCareContent() {
     "And So Much More"
   ];
 
-  const services = [
+ const services = [
     {
       icon: Brush,
       title: "CLEANING SUPPORT",
-      description: "We offer a full range of professional options, using top quality cleaning materials and products, to achieve brilliant results.",
+      description: "We offer a full range of professional cleaning, using top-quality cleaning materials and products, for advice and support.",
       image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=400&fit=crop",
       imageAlt: "Professional cleaning service",
       link: "/services/cleaning-support"
@@ -93,7 +93,7 @@ export function DomiciliaryCareContent() {
     {
       icon: Stethoscope,
       title: "HEALTHCARE SERVICE",
-      description: "Our person-centred approach focuses on wellbeing, individual likes and dislikes, and freedom to make informed choices.",
+      description: "Our comprehensive approach includes services such as health checks, wellness programs, and tailored healthcare plans.",
       image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop",
       imageAlt: "Compassionate healthcare service",
       link: "/services/healthcare-service"
@@ -101,7 +101,7 @@ export function DomiciliaryCareContent() {
     {
       icon: Briefcase,
       title: "HEALTHCARE STAFFING",
-      description: "We continue to provide our care and support services as we have done throughout the COVID crisis and beyond.",
+      description: "We continue to provide our care staff with the best possible working conditions.",
       image: "https://images.unsplash.com/photo-1521791055366-0d553872125f?w=600&h=400&fit=crop",
       imageAlt: "Professional healthcare staffing",
       link: "/services/healthcare-staffing"

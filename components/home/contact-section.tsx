@@ -217,7 +217,7 @@ export function ContactSection() {
               <ContactItem 
                 icon={MapPin} 
                 title="Address" 
-                content="65 Cranbrook Road, Ilford, London, IG1 4PG" 
+                content="65 Cranbrook Road, Ilford, London, IG1 4PG, United Kingdom" 
               />
               <ContactItem 
                 icon={Phone} 
@@ -234,7 +234,7 @@ export function ContactSection() {
             </div>
 
             {/* Office Hours */}
-            <div className="pt-6 border-t border-slate-100">
+            {/* <div className="pt-6 border-t border-slate-100">
               <h3 className="font-semibold text-slate-800 mb-3 flex items-center gap-2">
                 <Users className="w-4 h-4 text-primary" />
                 Office Hours
@@ -242,7 +242,7 @@ export function ContactSection() {
               <p className="text-slate-600 text-sm">Monday - Friday: 9:00 AM - 6:00 PM</p>
               <p className="text-slate-600 text-sm">Saturday: 10:00 AM - 4:00 PM</p>
               <p className="text-slate-600 text-sm">Sunday: Closed (Emergency support available 24/7)</p>
-            </div>
+            </div> */}
           </div>
 
           {/* --- RIGHT SIDE: FORM --- */}
@@ -411,62 +411,7 @@ export function ContactSection() {
           </div>
         </div>
 
-        {/* --- FOOTER / SERVICES LINKS --- */}
-        <div className="mt-20 pt-10 border-t border-slate-100">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Cleaning Services */}
-            <div>
-              <h3 className="text-lg font-bold mb-4 text-primary">CLEANING SERVICES</h3>
-              <ul className="space-y-2">
-                {cleaningServices.map((service, idx) => (
-                  <li key={idx}>
-                    <a href="#" className="text-slate-500 hover:text-primary text-sm transition-colors">
-                      {service}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Care Services */}
-            <div>
-              <h3 className="text-lg font-bold mb-4 text-primary">CARE SERVICES</h3>
-              <ul className="space-y-2">
-                {careServices.map((service, idx) => (
-                  <li key={idx}>
-                    <a href="#" className="text-slate-500 hover:text-primary text-sm transition-colors">
-                      {service}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h3 className="text-lg font-bold mb-4 text-primary">QUICK LINKS</h3>
-              <ul className="space-y-2">
-                {quickLinks.map((link, idx) => (
-                  <li key={idx}>
-                    <a href={link.href} className="text-slate-500 hover:text-primary text-sm transition-colors">
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-6 pt-6 border-t border-slate-100">
-                <p className="text-slate-400 text-xs">
-                  65 Cranbrook Road, Ilford, London, IG1 4PG
-                </p>
-                <p className="text-slate-400 text-xs mt-1">
-                  Email: info@medicarelink.co.uk<br />
-                  Contact: 02030111145<br />
-                  Website: www.medicarelink.co.uk
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+     
       </div>
     </section>
   );

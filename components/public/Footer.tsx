@@ -33,8 +33,8 @@ export function Footer() {
     { label: "Elderly Care", href: "/services/elderly-care" },
     { label: "Domiciliary Care", href: "/services/domiciliary-care" },
     { label: "Companionship & Support", href: "/services/companionship-and-support" },
-    { label: "Dementia Care", href: "/services/alzheimers-dementia-care" },
-    { label: "Brain Injury Care", href: "/services/acquired-brain-injury" },
+    { label: "Alzheimer's & Dementia Care", href: "/services/alzheimers-dementia-care" },
+    { label: "Acquired Brain Injury", href: "/services/acquired-brain-injury" },
   ];
 
   const quickLinks = [
@@ -45,9 +45,11 @@ export function Footer() {
   ];
 
   const contactInfo = {
-    address: "123 Healthcare Street, Medical District, London, UK",
-    phone: "+44 123 456 7890",
-    email: "info@medicarelink.co.uk",
+      name: "Medicare Link ",
+  description: "Medicare Link provides compassionate healthcare, home care, cleaning support, and healthcare staffing services across the UK. Our fully qualified caregivers deliver personalized, professional, and empathetic care tailored to every client’s needs.",
+  address: "65 Cranbrook Road,Ilford, London, IG1 4PG, United Kingdom",
+  phone: "02030111145",
+  email: "info@medicarelink.co.uk",
   };
 
   return (
@@ -202,7 +204,7 @@ export function Footer() {
             <p className="text-sm text-white text-center md:text-left">
               &copy; {currentYear} Medicare Link. All rights reserved.
             </p>
-            <div className="flex flex-wrap justify-center gap-6">
+            {/* <div className="flex flex-wrap justify-center gap-6">
               <Link 
                 href="/privacy-policy" 
                 className="text-sm text-white hover:text-white transition-colors"
@@ -221,7 +223,7 @@ export function Footer() {
               >
                 Cookie Policy
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

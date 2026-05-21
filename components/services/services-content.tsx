@@ -106,7 +106,7 @@ export function ServicesContent() {
   }, []);
 
   const handleNavigate = (service: string) => {
-    router.push(`/services/${service.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`);
+    router.push(`${service}`);
   };
 
   const features = [
@@ -128,62 +128,78 @@ export function ServicesContent() {
   ];
 
 const allServices = [
-  { 
-    id: "healthcare-service", 
-    icon: Stethoscope, 
-    title: "HEALTHCARE SERVICE", 
+  {
+    id: "healthcare-service",
+    icon: Stethoscope,
+    title: "HEALTHCARE SERVICE",
+    link: "/services/healthcare-service",
     image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=300&fit=crop",
-    description: "Professional healthcare services tailored to your medical needs with compassionate care." 
+    description:
+      "Professional healthcare services tailored to your medical needs with compassionate care.",
   },
-  { 
-    id: "healthcare-staffing", 
-    icon: Briefcase, 
-    title: "HEALTHCARE STAFFING", 
+  {
+    id: "healthcare-staffing",
+    icon: Briefcase,
+    title: "HEALTHCARE STAFFING",
+    link: "/services/healthcare-staffing",
     image: "https://images.unsplash.com/photo-1521791055366-0d553872125f?w=400&h=300&fit=crop",
-    description: "Qualified healthcare professionals available for temporary or permanent placements." 
+    description:
+      "Qualified healthcare professionals available for temporary or permanent placements.",
   },
-  { 
-    id: "cleaning-support", 
-    icon: Brush, 
-    title: "CLEANING SUPPORT", 
+  {
+    id: "cleaning-support",
+    icon: Brush,
+    title: "CLEANING SUPPORT",
+    link: "/services/cleaning-support",
     image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=300&fit=crop",
-    description: "Full range of professional cleaning options using top quality materials and equipment." 
+    description:
+      "Full range of professional cleaning options using top quality materials and equipment.",
   },
-  { 
-    id: "live-in-care", 
-    icon: Home, 
-    title: "LIVE IN CARE SERVICE", 
-    image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=400&h=300&fit=crop",
-    description: "24/7 care and support in the comfort of your own home with dedicated caregivers." 
+  {
+    id: "live-in-care",
+    icon: Home,
+    title: "LIVE IN CARE SERVICE",
+    link: "/services/live-in-care",
+    image: "https://images.unsplash.com/photo-1773227055624-07b515ba87c5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description:
+      "24/7 care and support in the comfort of your own home with dedicated caregivers.",
   },
-  { 
-    id: "dementia-care", 
-    icon: Brain, 
-    title: "ALZHEIMER'S & DEMENTIA CARE", 
+  {
+    id: "dementia-care",
+    icon: Brain,
+    title: "ALZHEIMER'S & DEMENTIA CARE",
+    link: "/services/alzheimers-dementia-care",
     image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=300&fit=crop",
-    description: "Specialized care for individuals with memory loss, focusing on safety and dignity." 
+    description:
+      "Specialized care for individuals with memory loss, focusing on safety and dignity.",
   },
-  { 
-    id: "companionship", 
-    icon: Heart, 
-    title: "COMPANIONSHIP & SUPPORT", 
+  {
+    id: "companionship",
+    icon: Heart,
+    title: "COMPANIONSHIP & SUPPORT",
+    link: "/services/companionship-and-support",
     image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=400&h=300&fit=crop",
-    description: "Emotional and social support to combat loneliness and improve quality of life." 
+    description:
+      "Emotional and social support to combat loneliness and improve quality of life.",
   },
-  { 
-    id: "domiciliary-care", 
-    icon: Users, 
-    title: "DOMICILIARY CARE SUPPORT", 
+  {
+    id: "domiciliary-care",
+    icon: Users,
+    title: "DOMICILIARY CARE SUPPORT",
+    link: "/services/domiciliary-care",
     image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&h=300&fit=crop",
-    description: "Support with daily living activities while maintaining independence at home." 
+    description:
+      "Support with daily living activities while maintaining independence at home.",
   },
-  { 
-    id: "elderly-care", 
-    icon: Shield, 
-    title: "ELDERLY CARE SUPPORT", 
+  {
+    id: "elderly-care",
+    icon: Shield,
+    title: "ELDERLY CARE SUPPORT",
+    link: "/services/elderly-care",
     image: "https://images.unsplash.com/photo-1573497019236-17f8177b81e8?w=400&h=300&fit=crop",
-    description: "Compassionate care for seniors, respecting their dignity and life experiences." 
-  }
+    description:
+      "Compassionate care for seniors, respecting their dignity and life experiences.",
+  },
 ];
 
   return (
@@ -267,7 +283,7 @@ const allServices = [
           <div
             key={service.id}
             ref={(el) => { cardsRef.current[index] = el; }}
-            onClick={() => handleNavigate(service.title)}
+            onClick={() => handleNavigate(service.link)}
             className="group cursor-pointer bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
           >
             {/* Image Section */}
@@ -295,7 +311,7 @@ const allServices = [
               <button 
                 onClick={(e) => {
                   e.stopPropagation();
-                  handleNavigate(service.title);
+                  handleNavigate(service.link);
                 }}
                 className="inline-flex items-center gap-1 text-primary text-sm font-semibold hover:gap-2 transition-all duration-300"
               >

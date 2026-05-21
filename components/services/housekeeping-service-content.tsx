@@ -4,7 +4,7 @@
 import { useRef, useLayoutEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { 
+import {
   Home,
   Sparkles,
   Star,
@@ -22,7 +22,13 @@ import {
   Brain,
   Heart,
   Shield,
-  Users
+  Users,
+  Clock,
+  Calendar,
+  DoorClosed,
+  Move,
+  PartyPopper,
+  Sofa,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import gsap from "gsap";
@@ -42,7 +48,8 @@ export function HousekeepingServiceContent() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(contentRef.current,
+      gsap.fromTo(
+        contentRef.current,
         { opacity: 0, y: 30 },
         {
           opacity: 1,
@@ -52,12 +59,13 @@ export function HousekeepingServiceContent() {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 80%",
-          }
-        }
+          },
+        },
       );
 
       tasksRef.current.forEach((task, index) => {
-        gsap.fromTo(task,
+        gsap.fromTo(
+          task,
           { opacity: 0, x: -20 },
           {
             opacity: 1,
@@ -67,13 +75,14 @@ export function HousekeepingServiceContent() {
             scrollTrigger: {
               trigger: task,
               start: "top 88%",
-            }
-          }
+            },
+          },
         );
       });
 
       servicesRef.current.forEach((service, index) => {
-        gsap.fromTo(service,
+        gsap.fromTo(
+          service,
           { opacity: 0, y: 40 },
           {
             opacity: 1,
@@ -84,12 +93,13 @@ export function HousekeepingServiceContent() {
             scrollTrigger: {
               trigger: service,
               start: "top 85%",
-            }
-          }
+            },
+          },
         );
       });
 
-      gsap.fromTo(servicesListRef.current?.children || [],
+      gsap.fromTo(
+        servicesListRef.current?.children || [],
         { opacity: 0, y: 20 },
         {
           opacity: 1,
@@ -99,8 +109,8 @@ export function HousekeepingServiceContent() {
           scrollTrigger: {
             trigger: servicesListRef.current,
             start: "top 85%",
-          }
-        }
+          },
+        },
       );
     }, sectionRef);
 
@@ -108,95 +118,172 @@ export function HousekeepingServiceContent() {
   }, []);
 
   const housekeeperTasks = [
-    { icon: Sparkles, title: "General house upkeep", description: "Sweeping, mopping, vacuuming, dusting, washing dishes" },
-    { icon: WashingMachine, title: "Laundry duties", description: "Washing, folding and ironing clothes" },
-    { icon: Bed, title: "Bedroom neatening", description: "Changing linens, picking up clothes, toys, and clutter" },
-    { icon: ShoppingBag, title: "Running errands", description: "To restock food and personal care items" },
-    { icon: PawPrint, title: "Pet care", description: "Cleaning litter box, feeding and walking pets" },
-    { icon: Utensils, title: "Food preparation", description: "Family meals, snacks, and next day lunches" },
-    { icon: Flower2, title: "General yard care", description: "Watering plants and grass, pulling weeds" },
-    { icon: Trash2, title: "Garbage disposal", description: "Including separation of recyclables" }
+    {
+      icon: Sparkles,
+      title: "General house upkeep",
+      description: "Sweeping, mopping, vacuuming, dusting, washing dishes",
+    },
+    {
+      icon: WashingMachine,
+      title: "Laundry duties",
+      description: "Washing, folding and ironing clothes",
+    },
+    {
+      icon: Bed,
+      title: "Bedroom neatening",
+      description: "Changing linens, picking up clothes, toys, and clutter",
+    },
+    {
+      icon: ShoppingBag,
+      title: "Running errands",
+      description: "To restock food and personal care items",
+    },
+    {
+      icon: PawPrint,
+      title: "Pet care",
+      description: "Cleaning litter box, feeding and walking pets",
+    },
+    {
+      icon: Utensils,
+      title: "Food preparation",
+      description: "Family meals, snacks, and next day lunches",
+    },
+    {
+      icon: Flower2,
+      title: "General yard care",
+      description: "Watering plants and grass, pulling weeds",
+    },
+    {
+      icon: Trash2,
+      title: "Garbage disposal",
+      description: "Including separation of recyclables",
+    },
   ];
 
   const cleaningServices = [
-    "All Cleaning Support",
-    "Domestic Cleaning Service",
-    "End of Tenancy Cleaning",
-    "Event/Party Cleaning",
-    "Home Maid Service",
-    "Move-In/Move Out Cleaning",
-    "Office Cleaning",
-    "One-Off Cleaning Service",
-    "Spring Cleaning",
-    "Weekly Cleaners"
+    {
+      id: "domestic-cleaning",
+      icon: Home,
+      title: "DOMESTIC CLEANING SERVICE",
+      description:
+        "Regular domestic cleaning to keep your home spotless and organized.",
+      image:
+        "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=300&fit=crop",
+      color: "from-blue-500 to-blue-600",
+      link: "/services/domestic-cleaning-service",
+    },
+    {
+      id: "end-of-tenancy",
+      icon: DoorClosed,
+      title: "END OF TENANCY CLEANING",
+      description:
+        "Thorough cleaning to meet landlord and agency standards for deposit return.",
+      image:
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop",
+      color: "from-purple-500 to-purple-600",
+      link: "/services/end-of-tenancy-cleaning",
+    },
+    {
+      id: "event-party",
+      icon: PartyPopper,
+      title: "EVENT/PARTY CLEANING",
+      description:
+        "Pre and post-event cleaning so you can focus on enjoying your occasion.",
+      image:
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400&h=300&fit=crop",
+      color: "from-pink-500 to-pink-600",
+      link: "/services/event-party-cleaning",
+    },
+    {
+      id: "home-maid",
+      icon: Sparkles,
+      title: "HOME MAID SERVICE",
+      description:
+        "Professional home making services for a perfectly maintained household.",
+      image:
+        "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=300&fit=crop",
+      color: "from-teal-500 to-teal-600",
+      link: "/services/home-maid-service",
+    },
+    {
+      id: "housekeeping",
+      icon: Sofa,
+      title: "HOUSEKEEPING SERVICE",
+      description:
+        "Daily or weekly housekeeping to keep your home running smoothly.",
+      image:
+        "https://images.unsplash.com/photo-1584622781564-1d987f7333c1?w=400&h=300&fit=crop",
+      color: "from-green-500 to-green-600",
+      link: "/services/housekeeping-service",
+    },
+    {
+      id: "moving-cleaning",
+      icon: Move,
+      title: "MOVING IN/MOVE OUT CLEANING",
+      description: "Deep cleaning for properties when moving in or out.",
+      image:
+        "https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=400&h=300&fit=crop",
+      color: "from-orange-500 to-orange-600",
+      link: "/services/move-in-move-out-cleaning",
+    },
+    {
+      id: "one-off-cleaning",
+      icon: Calendar,
+      title: "ONE OFF CLEANING SERVICE",
+      description:
+        "Single deep clean for special occasions or seasonal refresh.",
+      image:
+        "https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&h=300&fit=crop",
+      color: "from-red-500 to-red-600",
+      link: "/services/one-off-cleaning-service",
+    },
+    {
+      id: "spring-cleaning",
+      icon: Flower2,
+      title: "SPRING CLEANING SERVICE",
+      description:
+        "Comprehensive seasonal deep clean to refresh your entire home.",
+      image:
+        "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=400&h=300&fit=crop",
+      color: "from-emerald-500 to-emerald-600",
+      link: "/services/spring-cleaning",
+    },
+    {
+      id: "office-cleaning",
+      icon: Briefcase,
+      title: "OFFICE CLEANING SERVICE",
+      description: "Professional cleaning for commercial and office spaces.",
+      image:
+        "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop",
+      color: "from-indigo-500 to-indigo-600",
+      link: "/services/office-cleaning-service",
+    },
+    {
+      id: "weekly-cleaning",
+      icon: Clock,
+      title: "WEEKLY CLEANING SERVICE",
+      description:
+        "Regular weekly cleaning to maintain a consistently clean home.",
+      image:
+        "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400&h=300&fit=crop",
+      color: "from-cyan-500 to-cyan-600",
+      link: "/services/weekly-cleaning",
+    },
   ];
 
- const allServices = [
-  { 
-    id: "healthcare-service", 
-    icon: Stethoscope, 
-    title: "HEALTHCARE SERVICE", 
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=300&fit=crop",
-    description: "Professional healthcare services tailored to your medical needs with compassionate care." 
-  },
-  { 
-    id: "healthcare-staffing", 
-    icon: Briefcase, 
-    title: "HEALTHCARE STAFFING", 
-    image: "https://images.unsplash.com/photo-1521791055366-0d553872125f?w=400&h=300&fit=crop",
-    description: "Qualified healthcare professionals available for temporary or permanent placements." 
-  },
-  { 
-    id: "cleaning-support", 
-    icon: Brush, 
-    title: "CLEANING SUPPORT", 
-    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=300&fit=crop",
-    description: "Full range of professional cleaning options using top quality materials and equipment." 
-  },
-  { 
-    id: "live-in-care", 
-    icon: Home, 
-    title: "LIVE IN CARE SERVICE", 
-    image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=400&h=300&fit=crop",
-    description: "24/7 care and support in the comfort of your own home with dedicated caregivers." 
-  },
-  { 
-    id: "dementia-care", 
-    icon: Brain, 
-    title: "ALZHEIMER'S & DEMENTIA CARE", 
-    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=300&fit=crop",
-    description: "Specialized care for individuals with memory loss, focusing on safety and dignity." 
-  },
-  { 
-    id: "companionship", 
-    icon: Heart, 
-    title: "COMPANIONSHIP & SUPPORT", 
-    image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=400&h=300&fit=crop",
-    description: "Emotional and social support to combat loneliness and improve quality of life." 
-  },
-  { 
-    id: "domiciliary-care", 
-    icon: Users, 
-    title: "DOMICILIARY CARE SUPPORT", 
-    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&h=300&fit=crop",
-    description: "Support with daily living activities while maintaining independence at home." 
-  },
-  { 
-    id: "elderly-care", 
-    icon: Shield, 
-    title: "ELDERLY CARE SUPPORT", 
-    image: "https://images.unsplash.com/photo-1573497019236-17f8177b81e8?w=400&h=300&fit=crop",
-    description: "Compassionate care for seniors, respecting their dignity and life experiences." 
-  }
-];
+  const handleLearnMore = (serviceId: string, serviceLink: string) => {
+    router.push(`${serviceLink}`);
+  };
 
   return (
     <main ref={sectionRef} className="bg-white">
       {/* Main Content */}
       <div className="container mx-auto py-16 lg:py-20">
-        
         {/* Description Section with Image */}
-        <div ref={contentRef} className="grid lg:grid-cols-2 gap-12 mb-16 items-start">
+        <div
+          ref={contentRef}
+          className="grid lg:grid-cols-2 gap-12 mb-16 items-start"
+        >
           {/* Left Side - Text Content */}
           <div>
             <div className="flex items-center gap-3 mb-6">
@@ -205,25 +292,29 @@ export function HousekeepingServiceContent() {
                 Housekeeping Service
               </h2>
             </div>
-            
+
             <p className="text-slate-600 leading-relaxed text-lg mb-6">
-              Medicare Link understands that it's the little things that make you feel at peace in your own home, 
-              and that's exactly what your domestic cleaner does. If you have fallen leaves piled up at your front 
-              entrance, we will sweep them away. We clean the interior and exterior of your refrigerator and dust 
-              the skirting boards.
+              Medicare Link understands that it's the little things that make
+              you feel at peace in your own home, and that's exactly what your
+              domestic cleaner does. If you have fallen leaves piled up at your
+              front entrance, we will sweep them away. We clean the interior and
+              exterior of your refrigerator and dust the skirting boards.
             </p>
-            
+
             <div className="bg-primary/5 rounded-xl p-6 mb-6">
               <p className="text-slate-700 leading-relaxed">
-                Busy schedules make it difficult to find time to maintain a proper home. The best way to ensure your 
-                home is always clean and tidy is by hiring our team at Medicare Link. Whether you need weekly, every 
-                other week, monthly, or occasional housekeeping services, our professionals will leave you feeling 
+                Busy schedules make it difficult to find time to maintain a
+                proper home. The best way to ensure your home is always clean
+                and tidy is by hiring our team at Medicare Link. Whether you
+                need weekly, every other week, monthly, or occasional
+                housekeeping services, our professionals will leave you feeling
                 comfortable in and proud of your space.
               </p>
             </div>
-            
+
             <p className="text-slate-600 leading-relaxed">
-              We encourage you to give us as many instructions as you'd like, so our housekeepers can build a plan.
+              We encourage you to give us as many instructions as you'd like, so
+              our housekeepers can build a plan.
             </p>
           </div>
 
@@ -239,7 +330,9 @@ export function HousekeepingServiceContent() {
             <div className="absolute bottom-6 left-6 right-6">
               <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full mb-3">
                 <Sparkles className="w-4 h-4 text-primary" />
-                <span className="text-primary font-semibold text-sm">Housekeeping</span>
+                <span className="text-primary font-semibold text-sm">
+                  Housekeeping
+                </span>
               </div>
               <h3 className="text-2xl font-bold text-white">Peace of Mind</h3>
               <p className="text-white/80">Professional home care services</p>
@@ -253,19 +346,24 @@ export function HousekeepingServiceContent() {
             Housekeeper Tasks
           </h2>
           <p className="text-slate-500 text-center mb-8">
-            Once you have decided to obtain help from an individual housekeeper or a housekeeping service, 
-            keep in mind the duties you can reasonably expect:
+            Once you have decided to obtain help from an individual housekeeper
+            or a housekeeping service, keep in mind the duties you can
+            reasonably expect:
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {housekeeperTasks.map((task, index) => (
               <div
                 key={index}
-                ref={(el) => { tasksRef.current[index] = el; }}
+                ref={(el) => {
+                  tasksRef.current[index] = el;
+                }}
                 className="flex items-start gap-3 bg-slate-50 rounded-xl p-4 hover:bg-primary/5 transition-colors duration-300"
               >
                 <task.icon className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                 <div>
-                  <h3 className="font-semibold text-slate-800 text-sm">{task.title}</h3>
+                  <h3 className="font-semibold text-slate-800 text-sm">
+                    {task.title}
+                  </h3>
                   <p className="text-slate-500 text-xs">{task.description}</p>
                 </div>
               </div>
@@ -281,49 +379,53 @@ export function HousekeepingServiceContent() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {allServices.map((service, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {cleaningServices.map((service, index) => (
               <div
-                key={index}
-                ref={(el) => { servicesRef.current[index] = el; }}
-                onClick={() => router.push('#')}
-                className="group bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                key={service.id}
+                onClick={() => handleLearnMore(service.id, service.link)}
+                className="group cursor-pointer bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 {/* Image Section */}
-                <div className="relative h-48 w-full overflow-hidden">
+                <div className="relative h-48 w-full overflow-hidden bg-slate-200">
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                </div>
-                
-                <div className="bg-primary/10 px-6 py-4 border-b border-slate-100">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center group-hover:bg-primary/90 transition-colors duration-300">
-                      <service.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-xl font-bold text-primary">{service.title}</h3>
+                  {/* Gradient Overlay */}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-t  opacity-60 group-hover:opacity-70 transition-opacity duration-300`}
+                  />
+                  {/* Icon Overlay */}
+                  <div className="absolute bottom-3 right-3 w-10 h-10 bg-white/90 rounded-xl flex items-center justify-center shadow-md">
+                    <service.icon className="w-5 h-5 text-primary" />
                   </div>
                 </div>
-                <div className="p-6">
-                  <p className="text-slate-600 leading-relaxed mb-6 line-clamp-3">
+
+                <div className="p-5 text-center">
+                  <h3 className="font-bold text-slate-800 mb-2 text-sm tracking-wide leading-tight">
+                    {service.title}
+                  </h3>
+                  <p className="text-slate-500 text-xs mb-4 line-clamp-2">
                     {service.description}
                   </p>
-                  <Button  className="inline-flex items-center gap-2 font-semibold transition-all duration-300">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleLearnMore(service.id, service.link);
+                    }}
+                    className="inline-flex items-center gap-1 text-primary text-sm font-semibold hover:gap-2 transition-all duration-300"
+                  >
                     Learn More
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
+                    <ArrowRight className="w-3 h-3" />
+                  </button>
                 </div>
               </div>
             ))}
           </div>
         </div>
-
-        
-
       </div>
     </main>
   );

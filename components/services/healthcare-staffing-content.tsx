@@ -177,6 +177,7 @@ export function HealthcareStaffingContent() {
             {reasons.map((reason, index) => (
               <div
                 key={index}
+                
                 ref={(el) => { reasonsRef.current[index] = el; }}
                 className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
               >

@@ -23,6 +23,7 @@ import {
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Button } from "../ui/button";
+import { useRouter } from "next/navigation";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -35,7 +36,7 @@ export function AboutContent() {
   const valuesRef = useRef<(HTMLDivElement | null)[]>([]);
   const servicesRef = useRef<(HTMLDivElement | null)[]>([]);
   const footerRef = useRef<HTMLDivElement>(null);
-
+  const router = useRouter();
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       // Quote animation
@@ -155,28 +156,31 @@ export function AboutContent() {
     "Regular Confidential Supervision"
   ];
 const services = [
-  {
-    icon: Brush,
-    title: "CLEANING SUPPORT",
-    description: "We offer a full range of professional options, using top quality cleaning materials and products, to achieve brilliant results.",
-    image: "/cleaning-service.jpg",
-    imageAlt: "Professional cleaning service"
-  },
-  {
-    icon: Stethoscope,
-    title: "HEALTHCARE SERVICE",
-    description: "Our person-centred approach focuses on wellbeing, individual likes and dislikes, and freedom to make informed choices.",
-    image: "/healthcare-service.jpg",
-    imageAlt: "Compassionate healthcare service"
-  },
-  {
-    icon: Briefcase,
-    title: "HEALTHCARE STAFFING",
-    description: "We continue to provide our care and support services as we have done throughout the COVID crisis and beyond, ensuring consistent, reliable staffing for all our clients.",
-    image: "/healthcare-staffing.jpg",
-    imageAlt: "Professional healthcare staffing"
-  }
-];
+    {
+      icon: Brush,
+      title: "CLEANING SUPPORT",
+      description: "We offer a full range of professional cleaning, using top-quality cleaning materials and products, for advice and support.",
+      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=400&fit=crop",
+      imageAlt: "Professional cleaning service",
+      link: "/services/cleaning-support"
+    },
+    {
+      icon: Stethoscope,
+      title: "HEALTHCARE SERVICE",
+      description: "Our comprehensive approach includes services such as health checks, wellness programs, and tailored healthcare plans.",
+      image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop",
+      imageAlt: "Compassionate healthcare service",
+      link: "/services/healthcare-service"
+    },
+    {
+      icon: Briefcase,
+      title: "HEALTHCARE STAFFING",
+      description: "We continue to provide our care staff with the best possible working conditions.",
+      image: "https://images.unsplash.com/photo-1521791055366-0d553872125f?w=600&h=400&fit=crop",
+      imageAlt: "Professional healthcare staffing",
+      link: "/services/healthcare-staffing"
+    }
+  ];
 
 
   return (
@@ -277,6 +281,8 @@ const services = [
     {services.map((service, index) => (
       <div
         key={index}
+                        onClick={() => router.push(service.link)}
+
         ref={(el) => { servicesRef.current[index] = el; }}
         className="group bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
       >

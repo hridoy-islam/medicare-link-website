@@ -20,11 +20,11 @@ const fontSans = DM_Sans({
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://medicarelink.co.uk"),
+  metadataBase: new URL("https://www.medicarelink.co.uk"),
 
   title: {
     default: "Medicare Link | Healthcare & Home Care Services UK",
-    template: "%s | Medicare Link",
+    template: "%s | Medicare Link | Healthcare & Home Care Services UK",
   },
 
   description:
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     title: "Medicare Link | Trusted Healthcare & Home Care Services",
     description:
       "Professional healthcare, home care, cleaning support, and staffing solutions delivered with compassion and care throughout the UK.",
-    url: "https://medicarelink.co.uk",
+    url: "https://www.medicarelink.co.uk",
     siteName: "Medicare Link",
     images: [
       {
@@ -99,7 +99,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://medicarelink.co.uk",
+    canonical: "https://www.medicarelink.co.uk",
   },
 
   category: "healthcare",

@@ -97,95 +97,105 @@ export function MoveInMoveOutCleaningContent() {
     }
   ];
 
-  const cleaningServices = [
-    "All Cleaning Support",
-    "Domestic Cleaning Service",
-    "End of Tenancy Cleaning",
-    "Event/Party Cleaning",
-    "Home Maid Service",
-    "Move-In/Move Out Cleaning",
-    "Office Cleaning",
-    "One-Off Cleaning Service",
-    "Spring Cleaning",
-    "Weekly Cleaners"
-  ];
+;
 
-  const allServices = [
-    { 
-      id: "cleaning-support", 
-      icon: Brush, 
-      title: "CLEANING SUPPORT", 
-      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=300&fit=crop",
-      description: "Full range of professional cleaning options using top quality materials and equipment." 
-    },
-    { 
-      id: "healthcare-service", 
-      icon: Heart, 
-      title: "HEALTHCARE SERVICE", 
-      image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=300&fit=crop",
-      description: "Professional healthcare services tailored to your medical needs with compassionate care." 
-    },
-    { 
-      id: "healthcare-staffing", 
-      icon: Briefcase, 
-      title: "HEALTHCARE STAFFING", 
-      image: "https://images.unsplash.com/photo-1521791055366-0d553872125f?w=400&h=300&fit=crop",
-      description: "Qualified healthcare professionals available for temporary or permanent placements." 
-    },
-    { 
-      id: "domestic-cleaning", 
-      icon: Home, 
-      title: "DOMESTIC CLEANING SERVICE", 
-      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=300&fit=crop",
-      description: "Regular domestic cleaning to keep your home spotless and organized." 
-    },
-    {
-      id: "end-of-tenancy",
-      icon: DoorClosed,
-      title: "END OF TENANCY CLEANING",
-      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop",
-      description: "Thorough cleaning to meet landlord and agency standards for deposit return."
-    },
-    {
-      id: "event-party",
-      icon: PartyPopper,
-      title: "EVENT/PARTY CLEANING",
-      image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400&h=300&fit=crop",
-      description: "Pre and post-event cleaning so you can focus on enjoying your occasion."
-    },
-    {
-      id: "housekeeping",
-      icon: Sofa,
-      title: "HOUSEKEEPING SERVICE",
-      image: "https://images.unsplash.com/photo-1584622781564-1d987f7333c1?w=400&h=300&fit=crop",
-      description: "Daily or weekly housekeeping to keep your home running smoothly."
-    },
-    {
-      id: "spring-cleaning",
-      icon: Flower2,
-      title: "SPRING CLEANING SERVICE",
-      image: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=400&h=300&fit=crop",
-      description: "Comprehensive seasonal deep clean to refresh your entire home."
-    },
-    {
-      id: "office-cleaning",
-      icon: Briefcase,
-      title: "OFFICE CLEANING SERVICE",
-      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop",
-      description: "Professional cleaning for commercial and office spaces."
-    },
-    {
-      id: "weekly-cleaning",
-      icon: Calendar,
-      title: "WEEKLY CLEANING SERVICE",
-      image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400&h=300&fit=crop",
-      description: "Regular weekly cleaning to maintain a consistently clean home."
-    }
-  ];
+ const cleaningServices = [
+  {
+    id: "domestic-cleaning",
+    icon: Home,
+    title: "DOMESTIC CLEANING SERVICE",
+    description: "Regular domestic cleaning to keep your home spotless and organized.",
+    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=300&fit=crop",
+    color: "from-blue-500 to-blue-600",
+    link: "/services/domestic-cleaning-service",
+  },
+  {
+    id: "end-of-tenancy",
+    icon: DoorClosed,
+    title: "END OF TENANCY CLEANING",
+    description: "Thorough cleaning to meet landlord and agency standards for deposit return.",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop",
+    color: "from-purple-500 to-purple-600",
+    link: "/services/end-of-tenancy-cleaning",
+  },
+  {
+    id: "event-party",
+    icon: PartyPopper,
+    title: "EVENT/PARTY CLEANING",
+    description: "Pre and post-event cleaning so you can focus on enjoying your occasion.",
+    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400&h=300&fit=crop",
+    color: "from-pink-500 to-pink-600",
+    link: "/services/event-party-cleaning",
+  },
+  {
+    id: "home-maid",
+    icon: Sparkles,
+    title: "HOME MAID SERVICE",
+    description: "Professional home making services for a perfectly maintained household.",
+    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=300&fit=crop",
+    color: "from-teal-500 to-teal-600",
+    link: "/services/home-maid-service",
+  },
+  {
+    id: "housekeeping",
+    icon: Sofa,
+    title: "HOUSEKEEPING SERVICE",
+    description: "Daily or weekly housekeeping to keep your home running smoothly.",
+    image: "https://images.unsplash.com/photo-1584622781564-1d987f7333c1?w=400&h=300&fit=crop",
+    color: "from-green-500 to-green-600",
+    link: "/services/housekeeping-service",
+  },
+  {
+    id: "moving-cleaning",
+    icon: Move,
+    title: "MOVING IN/MOVE OUT CLEANING",
+    description: "Deep cleaning for properties when moving in or out.",
+    image: "https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=400&h=300&fit=crop",
+    color: "from-orange-500 to-orange-600",
+    link: "/services/move-in-move-out-cleaning",
+  },
+  {
+    id: "one-off-cleaning",
+    icon: Calendar,
+    title: "ONE OFF CLEANING SERVICE",
+    description: "Single deep clean for special occasions or seasonal refresh.",
+    image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&h=300&fit=crop",
+    color: "from-red-500 to-red-600",
+    link: "/services/one-off-cleaning-service",
+  },
+  {
+    id: "spring-cleaning",
+    icon: Flower2,
+    title: "SPRING CLEANING SERVICE",
+    description: "Comprehensive seasonal deep clean to refresh your entire home.",
+    image: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=400&h=300&fit=crop",
+    color: "from-emerald-500 to-emerald-600",
+    link: "/services/spring-cleaning",
+  },
+  {
+    id: "office-cleaning",
+    icon: Briefcase,
+    title: "OFFICE CLEANING SERVICE",
+    description: "Professional cleaning for commercial and office spaces.",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop",
+    color: "from-indigo-500 to-indigo-600",
+    link: "/services/office-cleaning-service",
+  },
+  {
+    id: "weekly-cleaning",
+    icon: Clock,
+    title: "WEEKLY CLEANING SERVICE",
+    description: "Regular weekly cleaning to maintain a consistently clean home.",
+    image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400&h=300&fit=crop",
+    color: "from-cyan-500 to-cyan-600",
+    link: "/services/weekly-cleaning",
+  },
+];
 
-  const handleNavigate = (title: string) => {
-    const slug = title.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-');
-    router.push(`/services/${slug}`);
+   const handleLearnMore = (serviceId: string, serviceLink: string) => {
+
+      router.push(`${serviceLink}`);
+    
   };
 
   return (
@@ -285,52 +295,51 @@ export function MoveInMoveOutCleaningContent() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {allServices.map((service, index) => {
-                const Icon = service.icon;
-                return (
-                  <div
-                    key={service.id}
-                    ref={(el) => { cardsRef.current[index] = el; }}
-                    onClick={() => handleNavigate(service.title)}
-                    className="group cursor-pointer bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                  >
-                    {/* Image Section */}
-                    <div className="relative h-44 w-full overflow-hidden bg-slate-200">
-                      <Image
-                        src={service.image}
-                        alt={service.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                      <div className="absolute bottom-3 right-3 w-10 h-10 bg-white/90 rounded-xl flex items-center justify-center shadow-md">
-                        <Icon className="w-5 h-5 text-primary" />
-                      </div>
-                    </div>
-                    
-                    <div className="p-5 text-center">
-                      <h3 className="font-bold text-slate-800 mb-2 text-sm tracking-wide">
-                        {service.title}
-                      </h3>
-                      <p className="text-slate-500 text-xs mb-4 line-clamp-2">
-                        {service.description}
-                      </p>
-                      <button 
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleNavigate(service.title);
-                        }}
-                        className="inline-flex items-center gap-1 text-primary text-sm font-semibold hover:gap-2 transition-all duration-300"
-                      >
-                        Learn More
-                        <ArrowRight className="w-3 h-3" />
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                                 {cleaningServices.map((service, index) => (
+                                   <div
+                                     key={service.id}
+                                     ref={(el) => { cardsRef.current[index] = el; }}
+                                     onClick={() => handleLearnMore(service.id, service.link)}
+                                     className="group cursor-pointer bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                                   >
+                                     {/* Image Section */}
+                                     <div className="relative h-48 w-full overflow-hidden bg-slate-200">
+                                       <Image
+                                         src={service.image}
+                                         alt={service.title}
+                                         fill
+                                         className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                       />
+                                       {/* Gradient Overlay */}
+                                       <div className={`absolute inset-0 bg-gradient-to-t  opacity-60 group-hover:opacity-70 transition-opacity duration-300`} />
+                                       {/* Icon Overlay */}
+                                       <div className="absolute bottom-3 right-3 w-10 h-10 bg-white/90 rounded-xl flex items-center justify-center shadow-md">
+                                         <service.icon className="w-5 h-5 text-primary" />
+                                       </div>
+                                     </div>
+                                     
+                                     <div className="p-5 text-center">
+                                       <h3 className="font-bold text-slate-800 mb-2 text-sm tracking-wide leading-tight">
+                                         {service.title}
+                                       </h3>
+                                       <p className="text-slate-500 text-xs mb-4 line-clamp-2">
+                                         {service.description}
+                                       </p>
+                                       <button 
+                                         onClick={(e) => {
+                                           e.stopPropagation();
+                                           handleLearnMore(service.id, service.link);
+                                         }}
+                                         className="inline-flex items-center gap-1 text-primary text-sm font-semibold hover:gap-2 transition-all duration-300"
+                                       >
+                                         Learn More
+                                         <ArrowRight className="w-3 h-3" />
+                                       </button>
+                                     </div>
+                                   </div>
+                                 ))}
+                               </div>
           </div>
         </div>
 

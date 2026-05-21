@@ -124,16 +124,15 @@ export function OneOffCleaningContent() {
   ];
 
   const cleaningServices = [
-    "All Cleaning Support",
-    "Domestic Cleaning Service",
+   "Domestic Cleaning Service",
     "End of Tenancy Cleaning",
-    "Event/Party Cleaning",
+    "Event Party Cleaning",
     "Home Maid Service",
-    "Move-In/Move-Out Cleaning",
-    "Office Cleaning",
-    "One-Off Cleaning Service",
+    "Move In Move Out Cleaning",
+    "Office Cleaning Service",
+    "One Off Cleaning Service",
     "Spring Cleaning",
-    "Weekly Cleaners"
+    "Weekly Cleaning"
   ];
 
   return (

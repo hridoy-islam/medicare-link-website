@@ -101,12 +101,24 @@ export function PalliativeCareContent() {
     { icon: Users, title: "Companionship", description: "Supporting your independent living at home" }
   ];
 
-  const allServices = [
-    "Companionship & Support",
-    "Domiciliary Care Support",
-    "Elderly Care",
-    "Alzheimer's & Dementia Care"
-  ];
+const allServices = [
+  {
+    title: "Companionship & Support",
+    link: "/services/companionship-and-support",
+  },
+  {
+    title: "Domiciliary Care Support",
+    link: "/services/domiciliary-care",
+  },
+  {
+    title: "Elderly Care",
+    link: "/services/elderly-care",
+  },
+  {
+    title: "Alzheimer's & Dementia Care",
+    link: "/services/alzheimers-dementia-care",
+  },
+];
 
   const services = [
     {
@@ -202,25 +214,25 @@ export function PalliativeCareContent() {
 
         {/* All Services List */}
         <div ref={servicesListRef} className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-800 text-center mb-8">
-            All Services
-          </h2>
-          <div className="flex flex-wrap justify-center gap-3">
-            {allServices.map((service, idx) => (
-              <div
-                key={idx}
-                className="flex items-center gap-2 bg-primary/10 rounded-full px-5 py-2 cursor-pointer hover:bg-primary/20 transition-colors duration-300"
-                onClick={() => {
-                  const slug = service.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-');
-                  router.push(`/services/${slug}`);
-                }}
-              >
-                <Star className="w-3 h-3 text-primary" />
-                <span className="text-sm text-slate-700 font-medium">{service}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+  <h2 className="text-2xl md:text-3xl font-bold text-slate-800 text-center mb-8">
+    All Services
+  </h2>
+
+  <div className="flex flex-wrap justify-center gap-3">
+    {allServices.map((service, idx) => (
+      <div
+        key={idx}
+        className="flex items-center gap-2 bg-primary/10 rounded-full px-5 py-2 cursor-pointer hover:bg-primary/20 transition-colors duration-300"
+        onClick={() => router.push(service.link)}
+      >
+        <Star className="w-3 h-3 text-primary" />
+        <span className="text-sm text-slate-700 font-medium">
+          {service.title}
+        </span>
+      </div>
+    ))}
+  </div>
+</div>
 
         {/* Our Services Section */}
         <div className="py-8">

@@ -256,7 +256,7 @@ export function Hero({ badgeText = "", title, subtitle,buttonText="",buttonHref=
 
       {/* ── Content ── */}
       <div className="container relative z-10">
-        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+        <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
 
           {/* Breadcrumb */}
           <AnimatedBreadcrumb title={title} />
