@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     siteName: "Medicare Link",
     images: [
       {
-        url: "/medicare-link.webp",
+        url: "/medicare-link.png",
         width: 1200,
         height: 630,
         alt: "End of Tenancy Cleaning Services UK",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title: "End of Tenancy Cleaning | Medicare Link UK",
     description:
       "Reliable move-out and end of tenancy cleaning services across the UK for tenants and landlords.",
-    images: ["/medicare-link.webp"],
+    images: ["/medicare-link.png"],
   },
 
   alternates: {

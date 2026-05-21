@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     siteName: "Medicare Link",
     images: [
       {
-        url: "/medicare-link.webp",
+        url: "/medicare-link.png",
         width: 1200,
         height: 630,
         alt: "Learning Disability Care UK",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title: "Learning Disability Care | Medicare Link UK",
     description:
       "Personalized learning disability care services across the UK focused on independence, dignity, and daily support.",
-    images: ["/medicare-link.webp"],
+    images: ["/medicare-link.png"],
   },
 
   alternates: {
@@ -59,3 +59,9 @@ export default function LearningDisabilityCareLayout({
 }) {
   return <>{children}</>;
 }
+
+
+
+
+
+

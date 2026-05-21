@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     siteName: "Medicare Link",
     images: [
       {
-        url: "/medicare-link.webp",
+        url: "/medicare-link.png",
         width: 1200,
         height: 630,
         alt: "Companionship & Support Services UK",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title: "Companionship & Support | Medicare Link UK",
     description:
       "Trusted companionship and emotional support services across the UK, delivered with care and compassion.",
-    images: ["/medicare-link.webp"],
+    images: ["/medicare-link.png"],
   },
 
   alternates: {

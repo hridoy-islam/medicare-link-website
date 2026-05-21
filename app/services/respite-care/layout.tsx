@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     siteName: "Medicare Link",
     images: [
       {
-        url: "/medicare-link.webp",
+        url: "/medicare-link.png",
         width: 1200,
         height: 630,
         alt: "Respite Care Services UK",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title: "Respite Care | Medicare Link UK",
     description:
       "Professional respite care services across the UK providing short-term support and relief for family caregivers.",
-    images: ["/medicare-link.webp"],
+    images: ["/medicare-link.png"],
   },
 
   alternates: {

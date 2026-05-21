@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: "Medicare Link",
     images: [
       {
-        url: "/medicare-link.webp",
+        url: "/medicare-link.png",
         width: 1200,
         height: 630,
         alt: "Acquired Brain Injury Support Services",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     title: "Acquired Brain Injury Support | Medicare Link UK",
     description:
       "Compassionate ABI care services across the UK — rehabilitation, daily support, and personalized care plans.",
-    images: ["/medicare-link.webp"],
+    images: ["/medicare-link.png"],
   },
 
   alternates: {

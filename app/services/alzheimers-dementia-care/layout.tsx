@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: "Medicare Link",
     images: [
       {
-        url: "/medicare-link.webp",
+        url: "/medicare-link.png",
         width: 1200,
         height: 630,
         alt: "Alzheimer’s & Dementia Care Services UK",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "Alzheimer’s & Dementia Care | Medicare Link UK",
     description:
       "Compassionate dementia and Alzheimer’s care services across the UK with trained caregivers and personalized support plans.",
-    images: ["/medicare-link.webp"],
+    images: ["/medicare-link.png"],
   },
 
   alternates: {

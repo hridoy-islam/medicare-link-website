@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     siteName: "Medicare Link",
     images: [
       {
-        url: "/medicare-link.webp",
+        url: "/medicare-link.png",
         width: 1200,
         height: 630,
         alt: "Office Cleaning Service UK",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title: "Office Cleaning Service | Medicare Link UK",
     description:
       "Trusted office and commercial cleaning services across the UK for clean, safe, and productive workplaces.",
-    images: ["/medicare-link.webp"],
+    images: ["/medicare-link.png"],
   },
 
   alternates: {

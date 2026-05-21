@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     siteName: "Medicare Link",
     images: [
       {
-        url: "/medicare-link.webp",
+        url: "/medicare-link.png",
         width: 1200,
         height: 630,
         alt: "Healthcare Services UK",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title: "Healthcare Service | Medicare Link UK",
     description:
       "Professional healthcare services across the UK with compassionate and trained caregivers.",
-    images: ["/medicare-link.webp"],
+    images: ["/medicare-link.png"],
   },
 
   alternates: {
