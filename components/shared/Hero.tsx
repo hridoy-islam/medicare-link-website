@@ -234,9 +234,12 @@ interface HeroProps {
   badgeText?: string;
   title: string;
   subtitle: string;
+  buttonText?:string;
+  buttonHref?:string;
+
 }
 
-export function Hero({ badgeText = "", title, subtitle }: HeroProps) {
+export function Hero({ badgeText = "", title, subtitle,buttonText="",buttonHref="" }: HeroProps) {
   return (
     <section
       className="relative overflow-hidden pb-16 pt-28 text-center md:pb-20 md:pt-36"

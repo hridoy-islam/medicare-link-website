@@ -14,7 +14,7 @@ export default function JoinPage() {
       <Hero 
         title={title}
         subtitle={subtitle}
-        buttonText="Apply Now"
+        // buttonText="Apply Now"
         buttonHref="#apply-form"
       />
       <JoinContent />
