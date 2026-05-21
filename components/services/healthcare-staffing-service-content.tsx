@@ -354,7 +354,6 @@ export function HealthcareStaffingServiceContent() {
                     {service.description}
                   </p>
                   <Button
-                    variant={"secondary"}
                     className="inline-flex items-center gap-2  font-semibold  transition-all duration-300"
                   >
                     Learn More

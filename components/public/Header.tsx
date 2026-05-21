@@ -166,20 +166,20 @@ export function Header() {
           <nav className="hidden lg:flex items-center gap-8">
             <Link
               href="/"
-              className="font-semibold  tracking-[1.5px] text-sm text-slate-800 hover:text-primary transition-colors"
+              className="font-semibold text-md   tracking-[1.5px]  text-slate-800 hover:text-primary transition-colors"
             >
               Home
             </Link>
 
             <Link
               href="/about"
-              className="font-semibold  tracking-[1.5px] text-sm text-slate-800 hover:text-primary transition-colors"
+              className="font-semibold text-md   tracking-[1.5px]  text-slate-800 hover:text-primary transition-colors"
             >
               About Us
             </Link>
             <Link
               href="/join-medicare-link"
-              className="font-semibold  tracking-[1.5px] text-sm text-slate-800 hover:text-primary transition-colors"
+              className="font-semibold  tracking-[1.5px] text-md text-slate-800 hover:text-primary transition-colors"
             >
               Join Medicare Link
             </Link>
@@ -192,7 +192,7 @@ export function Header() {
             >
               <Link
                 href="/services"
-                className="flex items-center gap-1 font-semibold  tracking-[1.5px] text-sm text-slate-800 hover:text-primary transition-colors"
+                className="flex items-center gap-1 font-semibold  tracking-[1.5px] text-md text-slate-800 hover:text-primary transition-colors"
               >
                 Services
                 <ChevronDown size={16} />
@@ -203,7 +203,7 @@ export function Header() {
                   <div className="w-[48rem] rounded-xl border border-slate-100 bg-white shadow-xl grid grid-cols-2 gap-6 p-6">
                     {/* Cleaning Services Column */}
                     <div>
-                      <h3 className="text-xs font-bold  tracking-[2px] text-primary mb-4 px-1">
+                      <h3 className="text-md font-bold  tracking-[2px] text-primary mb-4 px-1">
                         Cleaning Services
                       </h3>
                       <div className="flex flex-col gap-0.5">
@@ -212,7 +212,7 @@ export function Header() {
                             key={service.href}
                             href={service.href}
                             onClick={handleServiceClick}
-                            className="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors rounded-md"
+                            className="block px-3 py-2 text-md font-medium text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors rounded-md"
                           >
                             {service.label}
                           </Link>
@@ -222,7 +222,7 @@ export function Header() {
 
                     {/* Care Services Column */}
                     <div>
-                      <h3 className="text-xs font-bold  tracking-[2px] text-primary mb-4 px-1">
+                      <h3 className="text-md font-bold  tracking-[2px] text-primary mb-4 px-1">
                         Care Services
                       </h3>
                       <div className="flex flex-col gap-0.5">
@@ -231,7 +231,7 @@ export function Header() {
                             key={service.href}
                             href={service.href}
                             onClick={handleServiceClick}
-                            className="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors rounded-md"
+                            className="block px-3 py-2 text-md font-medium text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors rounded-md"
                           >
                             {service.label}
                           </Link>
@@ -245,7 +245,7 @@ export function Header() {
 
             <Link
               href="/contact"
-              className="font-semibold  tracking-[1.5px] text-sm text-slate-800 hover:text-primary transition-colors"
+              className="font-semibold  tracking-[1.5px] text-md text-slate-800 hover:text-primary transition-colors"
             >
               Contact Us
             </Link>

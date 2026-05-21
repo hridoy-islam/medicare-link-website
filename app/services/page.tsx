@@ -6,7 +6,7 @@ import { Hero } from "@/components/shared/Hero";
 import SmoothScroll from "@/components/shared/smooth-scroll";
 
 export default function ServicesPage() {
-  const title = "OUR SERVICES";
+  const title = "Our Services";
   const subtitle = "Comprehensive care and cleaning solutions tailored to your individual needs";
 
   return (

@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Home, ChevronRight } from "lucide-react";
 
 // ─── Decorative Background Components ────────────────────────────────────────
 
@@ -17,25 +16,35 @@ function GridLines() {
           linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
           linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)
         `,
-        backgroundSize: "64px 64px",
+        backgroundSize: "48px 48px",
       }}
     />
   );
 }
 
-function NoiseMask() {
+function TopEdgeShine() {
   return (
-    <svg
+    <div
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.03]"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <filter id="noise">
-        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
-        <feColorMatrix type="saturate" values="0" />
-      </filter>
-      <rect width="100%" height="100%" filter="url(#noise)" />
-    </svg>
+      className="pointer-events-none absolute left-0 right-0 top-0 h-px"
+      style={{
+        background:
+          "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 35%, rgba(255,255,255,0.5) 65%, transparent 100%)",
+      }}
+    />
+  );
+}
+
+function BottomFade() {
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute bottom-0 left-0 right-0 h-20"
+      style={{
+        background:
+          "linear-gradient(to top, rgba(100,0,0,0.35) 0%, transparent 100%)",
+      }}
+    />
   );
 }
 
@@ -50,100 +59,171 @@ function RadialGlow() {
     >
       {/* Center pulse */}
       <motion.div
-        animate={{ scale: [1, 1.08, 1], opacity: [0.35, 0.55, 0.35] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[640px] w-[640px] rounded-full"
+        animate={{ scale: [1, 1.06, 1], opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[520px] w-[520px] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(255,100,100,0.35) 0%, rgba(220,30,30,0.12) 45%, transparent 70%)",
+            "radial-gradient(circle, rgba(220,38,38,0.4) 0%, rgba(185,28,28,0.18) 45%, transparent 70%)",
         }}
       />
-      {/* Top-left accent orb */}
+      {/* Top-left orb */}
       <motion.div
-        animate={{ y: [-12, 18, -12], x: [-8, 12, -8] }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -left-10 top-10 h-56 w-56 rounded-full"
+        animate={{ y: [-10, 14, -10], x: [-6, 10, -6] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -left-14 -top-5 h-64 w-64 rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(255,180,180,0.18) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(254,202,202,0.12) 0%, transparent 70%)",
         }}
       />
-      {/* Bottom-right accent orb */}
+      {/* Bottom-right orb */}
       <motion.div
-        animate={{ y: [10, -20, 10], x: [14, -14, 14] }}
-        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute -bottom-8 -right-8 h-72 w-72 rounded-full"
+        animate={{ y: [8, -18, 8], x: [12, -12, 12] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+        className="absolute -bottom-8 -right-10 h-72 w-72 rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(255,120,120,0.14) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(252,165,165,0.10) 0%, transparent 70%)",
         }}
       />
     </motion.div>
   );
 }
 
-function DiagonalStripes() {
+// ─── Floating Line Accents (replaces doodles) ────────────────────────────────
+
+function FloatingLines() {
+  const lines = [
+    { top: "18%", left: "8%",  width: 80,  rotate: -12, delay: 0,   duration: 7  },
+    { top: "22%", left: "11%", width: 40,  rotate: -12, delay: 0.3, duration: 7  },
+    { bottom: "26%", right: "10%", width: 60, rotate: 10, delay: 0,  duration: 9  },
+    { bottom: "32%", right: "13%", width: 32, rotate: 10, delay: 0.4, duration: 9  },
+    { top: "55%", right: "6%",  width: 50,  rotate: -8,  delay: 1,   duration: 6  },
+    { bottom: "18%", left: "14%", width: 70, rotate: 14, delay: 1.5, duration: 8  },
+  ];
+
+  const diamonds = [
+    { top: "15%",  right: "18%", delay: 0.5, duration: 6  },
+    { bottom: "20%", left: "18%",  delay: 1,   duration: 8  },
+    { top: "38%",  left: "7%",   delay: 2,   duration: 7  },
+  ];
+
   return (
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 overflow-hidden opacity-[0.06]"
-      style={{
-        backgroundImage: `repeating-linear-gradient(
-          -55deg,
-          transparent,
-          transparent 18px,
-          rgba(255,255,255,0.8) 18px,
-          rgba(255,255,255,0.8) 19px
-        )`,
-      }}
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+      {lines.map((line, i) => (
+        <motion.div
+          key={`line-${i}`}
+          className="absolute rounded-sm"
+          style={{
+            top: line.top,
+            left: line.left,
+            right: (line as { right?: string }).right,
+            bottom: (line as { bottom?: string }).bottom,
+            width: line.width,
+            height: 1.5,
+            background: "rgba(255,255,255,0.10)",
+            transform: `rotate(${line.rotate}deg)`,
+          }}
+          animate={{ y: [0, i % 2 === 0 ? -8 : 8, 0] }}
+          transition={{
+            duration: line.duration,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: line.delay,
+          }}
+        />
+      ))}
+      {diamonds.map((d, i) => (
+        <motion.div
+          key={`diamond-${i}`}
+          className="absolute"
+          style={{
+            top: d.top,
+            bottom: (d as { bottom?: string }).bottom,
+            left: (d as { left?: string }).left,
+            right: (d as { right?: string }).right,
+            width: 6,
+            height: 6,
+            background: "rgba(255,255,255,0.18)",
+            transform: "rotate(45deg)",
+          }}
+          animate={{ y: [0, i % 2 === 0 ? -8 : 8, 0] }}
+          transition={{
+            duration: d.duration,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: d.delay,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+// ─── Animated Breadcrumb ─────────────────────────────────────────────────────
+
+function BlinkingDot() {
+  return (
+    <motion.span
+      animate={{ opacity: [0.3, 1, 0.3] }}
+      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+      className="inline-block h-1 w-1 rounded-full bg-white/40"
     />
   );
 }
 
-function TopEdgeShine() {
+function AnimatedBreadcrumb({ title }: { title: string }) {
   return (
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute left-0 right-0 top-0 h-px"
-      style={{
-        background:
-          "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0.6) 60%, transparent 100%)",
-      }}
-    />
+    <motion.nav
+      aria-label="Breadcrumb"
+      initial={{ opacity: 0, y: -8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.1, duration: 0.5 }}
+      className="mb-5 flex justify-center"
+    >
+      <div
+        className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.18] bg-white/[0.08] px-3.5 py-1.5"
+        style={{ backdropFilter: "blur(8px)" }}
+      >
+        {/* Home */}
+        <Link
+          href="/"
+          className="flex items-center gap-1 text-[12.5px] text-white/65 transition-colors hover:text-white/90"
+        >
+          <Home className="h-3 w-3" aria-hidden="true" />
+          <span>Home</span>
+        </Link>
+
+        {/* Separator */}
+        <ChevronRight className="h-3 w-3 text-white/30" aria-hidden="true" />
+
+        {/* Blinking dot */}
+        <BlinkingDot />
+
+        {/* Current page */}
+        <motion.span
+          key={title}
+          initial={{ opacity: 0, x: 6 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.3 }}
+          className="max-w-[180px] truncate text-[12.5px] font-medium text-red-200"
+        >
+          {title}
+        </motion.span>
+      </div>
+    </motion.nav>
   );
 }
 
-function BottomFade() {
-  return (
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute bottom-0 left-0 right-0 h-40"
-      style={{
-        background:
-          "linear-gradient(to top, rgba(136,0,0,0.30) 0%, transparent 100%)",
-      }}
-    />
-  );
-}
+// ─── Badge ───────────────────────────────────────────────────────────────────
 
-function FloatingRing({
-  size,
-  top,
-  left,
-  delay = 0,
-}: {
-  size: number;
-  top: string;
-  left: string;
-  delay?: number;
-}) {
+function BadgeDot() {
   return (
-    <motion.div
-      aria-hidden="true"
-      className="pointer-events-none absolute rounded-full border border-white/10"
-      style={{ width: size, height: size, top, left }}
-      animate={{ scale: [1, 1.04, 1], opacity: [0.35, 0.6, 0.35] }}
-      transition={{ duration: 7 + delay, repeat: Infinity, ease: "easeInOut", delay }}
+    <motion.span
+      animate={{ opacity: [0.4, 1, 0.4] }}
+      transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+      className="inline-block h-[5px] w-[5px] rounded-full bg-red-300"
     />
   );
 }
@@ -154,20 +234,12 @@ interface HeroProps {
   badgeText?: string;
   title: string;
   subtitle: string;
-  buttonText?: string;
-  buttonHref?: string;
 }
 
-export function Hero({
-  badgeText = "",
-  title,
-  subtitle,
-  buttonText = "Contact Us",
-  buttonHref = "/contact",
-}: HeroProps) {
+export function Hero({ badgeText = "", title, subtitle }: HeroProps) {
   return (
     <section
-      className="relative overflow-hidden border-0 pb-24 pt-44 text-center md:pb-32 md:pt-52"
+      className="relative overflow-hidden pb-16 pt-28 text-center md:pb-20 md:pt-36"
       style={{
         background:
           "linear-gradient(140deg, #b91c1c 0%, #991b1b 35%, #7f1d1d 65%, #450a0a 100%)",
@@ -175,35 +247,28 @@ export function Hero({
     >
       {/* ── Layered decorative bg ── */}
       <GridLines />
-      <NoiseMask />
-      <DiagonalStripes />
       <RadialGlow />
+      <FloatingLines />
       <TopEdgeShine />
-
-      {/* Floating rings */}
-      <FloatingRing size={320} top="-60px" left="-80px" delay={0} />
-      <FloatingRing size={200} top="30%" left="82%" delay={1.5} />
-      <FloatingRing size={140} top="65%" left="8%" delay={3} />
 
       {/* ── Content ── */}
       <div className="container relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 36 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, ease: [0.22, 0.61, 0.36, 1] }}
-          className="mx-auto flex max-w-4xl flex-col items-center text-center"
-        >
+        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+
+          {/* Breadcrumb */}
+          <AnimatedBreadcrumb title={title} />
+
           {/* Badge */}
           {badgeText && (
             <motion.div
-              initial={{ opacity: 0, y: -12 }}
+              initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15, duration: 0.5 }}
-              className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white shadow-md backdrop-blur-md"
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[12px] font-medium uppercase tracking-widest text-red-200"
             >
-              <Sparkles className="h-3.5 w-3.5 text-red-200" aria-hidden="true" />
-              <span>{badgeText}</span>
-              <Sparkles className="h-3.5 w-3.5 text-red-200" aria-hidden="true" />
+              <BadgeDot />
+              {badgeText}
+              <BadgeDot />
             </motion.div>
           )}
 
@@ -211,56 +276,33 @@ export function Hero({
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25, duration: 0.65, ease: [0.22, 0.61, 0.36, 1] }}
-            className="mb-6 text-5xl font-bold leading-[1.08] tracking-tight md:text-7xl"
+            transition={{ delay: 0.28, duration: 0.65, ease: [0.22, 0.61, 0.36, 1] }}
+            className="mb-4 text-4xl font-bold leading-[1.08] tracking-tight md:text-6xl"
+            style={{
+              background:
+                "linear-gradient(135deg, #ffffff 0%, #fecaca 60%, #fca5a5 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
           >
-            <span
-              style={{
-                background:
-                  "linear-gradient(135deg, #ffffff 0%, #fecaca 55%, #fca5a5 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              {title}
-            </span>
+            {title}
           </motion.h1>
 
           {/* Subtitle */}
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.38, duration: 0.6 }}
-            className="mx-auto mb-10 max-w-2xl text-lg font-light leading-relaxed text-white/80 md:text-xl"
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="mx-auto max-w-2xl text-base font-light leading-relaxed text-white/75 md:text-lg"
           >
             {subtitle}
           </motion.p>
 
-          {/* CTA */}
-          {buttonText && buttonHref && (
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.52, duration: 0.55 }}
-              className="flex flex-col items-center gap-4 sm:flex-row"
-            >
-              <Link href={buttonHref} className="group inline-block">
-                <Button
-                  size="xl"
-                  variant="secondary"
-                  className="bg-white font-semibold text-red-700 shadow-xl shadow-black/20 transition-all duration-300 hover:bg-red-50 hover:text-red-800 hover:shadow-2xl hover:shadow-black/30"
-                >
-                  {buttonText}
-                  <ArrowRight
-                    className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5"
-                    aria-hidden="true"
-                  />
-                </Button>
-              </Link>
-            </motion.div>
-          )}
-        </motion.div>
+          
+
+         
+        </div>
       </div>
 
       <BottomFade />

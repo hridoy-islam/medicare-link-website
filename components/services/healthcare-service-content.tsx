@@ -226,7 +226,7 @@ export function HealthcareServiceContent() {
                   
                   <Button
                     onClick={() => router.push('/contact')}
-                    variant={'secondary'}
+                  
                     className="inline-flex items-center gap-1"
                   >
                     Enquire Now

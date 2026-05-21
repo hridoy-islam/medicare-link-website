@@ -230,7 +230,7 @@ export function AcquiredBrainInjuryContent() {
                   <p className="text-slate-600 leading-relaxed mb-6">
                     {service.description}
                   </p>
-                  <Button variant="secondary" className="inline-flex items-center gap-2 font-semibold transition-all duration-300">
+                  <Button  className="inline-flex items-center gap-2 font-semibold transition-all duration-300">
                     Learn More
                     <ArrowRight className="w-4 h-4" />
                   </Button>
