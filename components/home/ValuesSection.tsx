@@ -183,7 +183,7 @@ export function ValuesSection() {
                 </p>
               </div>
             </div>
-            
+                
             {/* Decorative element */}
             <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-primary/10 rounded-full blur-2xl" />
             <div className="absolute -top-6 -right-6 w-32 h-32 bg-primary/5 rounded-full blur-2xl" />
