@@ -262,7 +262,7 @@ export function Hero({ badgeText = "", title, subtitle,buttonText="",buttonHref=
           <AnimatedBreadcrumb title={title} />
 
           {/* Badge */}
-          {badgeText && (
+          {/* {badgeText && (
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -273,14 +273,14 @@ export function Hero({ badgeText = "", title, subtitle,buttonText="",buttonHref=
               {badgeText}
               <BadgeDot />
             </motion.div>
-          )}
+          )} */}
 
           {/* Title */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.28, duration: 0.65, ease: [0.22, 0.61, 0.36, 1] }}
-            className="mb-4 text-4xl font-bold leading-[1.08] tracking-tight md:text-6xl"
+            className="pb-6 text-4xl font-bold leading-[1.08] tracking-tight md:text-6xl"
             style={{
               background:
                 "linear-gradient(135deg, #ffffff 0%, #fecaca 60%, #fca5a5 100%)",

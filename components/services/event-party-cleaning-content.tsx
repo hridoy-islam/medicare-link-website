@@ -27,6 +27,7 @@ import {
 import { Button } from "@/components/ui/button";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import AllService from "../shared/allService";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -293,58 +294,8 @@ export function EventPartyCleaningContent() {
         </div>
 
         {/* Cleaning Services List */}
-        <div ref={servicesListRef} className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-800 text-center mb-8">
-            All Cleaning Support
-          </h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {cleaningServices.map((service, index) => (
-              <div
-                key={service.id}
-                onClick={() => handleLearnMore(service.id, service.link)}
-                className="group cursor-pointer bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-              >
-                {/* Image Section */}
-                <div className="relative h-48 w-full overflow-hidden bg-slate-200">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  {/* Gradient Overlay */}
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-t  opacity-60 group-hover:opacity-70 transition-opacity duration-300`}
-                  />
-                  {/* Icon Overlay */}
-                  <div className="absolute bottom-3 right-3 w-10 h-10 bg-white/90 rounded-xl flex items-center justify-center shadow-md">
-                    <service.icon className="w-5 h-5 text-primary" />
-                  </div>
-                </div>
-
-                <div className="p-5 text-center">
-                  <h3 className="font-bold text-slate-800 mb-2 text-sm tracking-wide leading-tight">
-                    {service.title}
-                  </h3>
-                  <p className="text-slate-500 text-xs mb-4 line-clamp-2">
-                    {service.description}
-                  </p>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleLearnMore(service.id, service.link);
-                    }}
-                    className="inline-flex items-center gap-1 text-primary text-sm font-semibold hover:gap-2 transition-all duration-300"
-                  >
-                    Learn More
-                    <ArrowRight className="w-3 h-3" />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+              <AllService/>
+        
       </div>
     </main>
   );

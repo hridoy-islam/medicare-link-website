@@ -80,7 +80,7 @@ export function HealthcareServiceContent() {
       title: "DOMICILIARY CARE SUPPORT (HOME CARE)",
       description: "Professional care and support in the comfort of your own home, helping with daily living activities while maintaining your independence.",
       fullDescription: "Our domiciliary care service provides assistance with personal care, medication management, meal preparation, and household tasks. We work around your schedule to ensure you receive the support you need when you need it.",
-      image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600&h=400&fit=crop",
+      image: "https://images.unsplash.com/photo-1762955911431-4c44c7c3f408?q=80&w=1121&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       features: ["Personal care assistance", "Medication management", "Meal preparation", "Household tasks", "Flexible scheduling"],
       color: "from-blue-500 to-blue-600"
     },
@@ -130,7 +130,7 @@ export function HealthcareServiceContent() {
   title: "LIVE IN CARE",
   description: "A dedicated caregiver living with you to provide personalized care and support around the clock.",
   fullDescription: "Our live-in care service provides a dedicated caregiver who resides in your home. This ensures consistent, personalized care and companionship while allowing you to remain in familiar surroundings.",
-  image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600&h=400&fit=crop",
+  image: "https://images.unsplash.com/photo-1773227055624-07b515ba87c5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   features: ["Dedicated caregiver", "Consistent support", "Familiar environment", "Personalized care", "24/7 presence"],
   color: "from-red-500 to-red-600"
 },
@@ -163,78 +163,77 @@ export function HealthcareServiceContent() {
       <div className="container mx-auto py-16 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {healthcareServices.map((service, index) => (
-            <div
-              key={service.id}
-              ref={(el) => { cardsRef.current[index] = el; }}
-              className="group bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300"
-            >
-              {/* Image Section */}
-              <div className="relative h-56 w-full overflow-hidden">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className={`absolute inset-0 bg-gradient-to-r opacity-40`} />
-                <div className="absolute bottom-4 left-4 bg-white/90 rounded-xl p-2 shadow-md">
-                  <service.icon className="w-6 h-6 text-primary" />
-                </div>
-              </div>
+           <div
+  key={service.id}
+  ref={(el) => { cardsRef.current[index] = el; }}
+  className="group bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+>
+  {/* Image Section */}
+  <div className="relative h-56 w-full overflow-hidden">
+    <Image
+      src={service.image}
+      alt={service.title}
+      fill
+      className="object-cover transition-transform duration-500 group-hover:scale-105"
+    />
+    <div className={`absolute inset-0 bg-gradient-to-r opacity-40`} />
+    <div className="absolute bottom-4 left-4 bg-white/90 rounded-xl p-2 shadow-md">
+      <service.icon className="w-6 h-6 text-primary" />
+    </div>
+  </div>
 
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="font-bold text-xl text-slate-800 mb-2">
-                  {service.title}
-                </h3>
-                <p className="text-slate-500 text-sm leading-relaxed mb-4">
-                  {expandedId === service.id ? service.fullDescription : service.description}
-                </p>
+  {/* Content */}
+  <div className="p-6 flex flex-col flex-grow">
+    <h3 className="font-bold text-xl text-slate-800 mb-2">
+      {service.title}
+    </h3>
+    <p className="text-slate-500 text-lg leading-relaxed mb-4">
+      {expandedId === service.id ? service.fullDescription : service.description}
+    </p>
 
-                {/* Expandable Features */}
-                {expandedId === service.id && (
-                  <div className="mt-4 mb-4 pt-4 border-t border-slate-100">
-                    <h4 className="font-semibold text-slate-700 mb-3 text-sm">Key Features:</h4>
-                    <div className="grid grid-cols-2 gap-2">
-                      {service.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                          <span className="text-slate-600 text-xs">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                <div className="flex items-center justify-between mt-2">
-                  <button
-                    onClick={() => toggleExpand(service.id)}
-                    className="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:gap-3 transition-all duration-300"
-                  >
-                    {expandedId === service.id ? (
-                      <>
-                        Show Less
-                        <Minus className="w-4 h-4" />
-                      </>
-                    ) : (
-                      <>
-                        Learn More
-                        <Plus className="w-4 h-4" />
-                      </>
-                    )}
-                  </button>
-                  
-                  <Button
-                    onClick={() => router.push('/contact')}
-                  
-                    className="inline-flex items-center gap-1"
-                  >
-                    Enquire Now
-                    <ArrowRight className="w-3 h-3" />
-                  </Button>
-                </div>
-              </div>
+    {/* Expandable Features */}
+    {expandedId === service.id && (
+      <div className="mt-4 mb-4 pt-4 border-t border-slate-100">
+        <h4 className="font-semibold text-slate-700 mb-3 text-sm">Key Features:</h4>
+        <div className="grid grid-cols-2 gap-2">
+          {service.features.map((feature, idx) => (
+            <div key={idx} className="flex items-center gap-2">
+              <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+              <span className="text-slate-600 text-xs">{feature}</span>
             </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <div className="flex items-center justify-between mt-auto pt-4">
+      <button
+        onClick={() => toggleExpand(service.id)}
+        className="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:gap-3 transition-all duration-300"
+      >
+        {expandedId === service.id ? (
+          <>
+            Show Less
+            <Minus className="w-4 h-4" />
+          </>
+        ) : (
+          <>
+            Learn More
+            <Plus className="w-4 h-4" />
+          </>
+        )}
+      </button>
+      
+      <Button
+        onClick={() => router.push('/contact')}
+        className="inline-flex items-center gap-1"
+      >
+        Enquire Now
+        <ArrowRight className="w-3 h-3" />
+      </Button>
+    </div>
+  </div>
+</div>
           ))}
         </div>
 

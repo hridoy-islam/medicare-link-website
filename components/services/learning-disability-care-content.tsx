@@ -19,6 +19,7 @@ import {
 import { Button } from "@/components/ui/button";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import OurService from "../shared/ourServices";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -162,54 +163,8 @@ export function LearningDisabilityCareContent() {
 
         
 
-        {/* Our Services Section */}
-        <div className="py-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Our Services
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                ref={(el) => { servicesRef.current[index] = el; }}
-                onClick={() => router.push(service.link)}
-                className="group bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
-              >
-                {/* Image Section */}
-                <div className="relative h-48 w-full overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.imageAlt}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                </div>
-                
-                <div className="bg-primary/10 px-6 py-4 border-b border-slate-100">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center group-hover:bg-primary/90 transition-colors duration-300">
-                      <service.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-xl font-bold text-primary">{service.title}</h3>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-slate-600 leading-relaxed mb-6">
-                    {service.description}
-                  </p>
-                  <Button  className="inline-flex items-center gap-2 font-semibold transition-all duration-300">
-                    Learn More
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+            <OurService/>
+     
 
         
       </div>

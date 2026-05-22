@@ -118,7 +118,7 @@ export function AimsSection() {
 
         {/* Service Rights Badge */}
         <div className="mt-12 flex justify-center">
-          <div className="inline-flex flex-wrap justify-center gap-3 bg-white rounded-full px-6 py-3 shadow-sm">
+          <div className="inline-flex flex-wrap justify-center gap-3 ">
             <span className="text-sm font-medium text-slate-700">Service User Rights:</span>
             <span className="text-sm text-primary font-semibold">Privacy</span>
             <span className="text-slate-300">•</span>
