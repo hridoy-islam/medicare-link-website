@@ -20,33 +20,36 @@ const fontSans = DM_Sans({
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.medicarelink.co.uk"),
+  metadataBase: new URL("https://ecrh.co.uk/"),
 
+  // Dynamic Title Configuration
   title: {
-    default: "Medicare Link | Healthcare & Home Care Services UK",
-    template: "%s | Medicare Link | Healthcare & Home Care Services UK",
+    default: "Elizabeth Court Rest Home | Residential Care Bexhill-on-Sea",
+    template: "%s | Elizabeth Court Rest Home",
   },
 
+  // Global Site Description (Optimized for CTR on Search Engines)
   description:
-    "Medicare Link provides compassionate healthcare, home care, cleaning support, and healthcare staffing services across the UK. Our fully qualified caregivers deliver personalized, professional, and empathetic care tailored to every client’s needs.",
+    "Elizabeth Court Rest Home (ECRH) provides compassionate, person-centred residential and dementia care in a historic 16th-century building in Bexhill Old Town, East Sussex. Discover our homely environment and expert care teams.",
 
+  // High-intent global search keywords
   keywords: [
-    "Medicare Link",
-    "Healthcare Services UK",
-    "Home Care Services",
-    "Healthcare Staffing",
-    "Cleaning Support Services",
-    "Caregivers UK",
-    "Personalized Care",
-    "Healthcare Support",
-    "Professional Care Services",
-    "Elderly Care UK",
+    "Elizabeth Court Rest Home",
+    "ECRH",
+    "Residential Care Bexhill-on-Sea",
+    "Care Homes Bexhill Old Town",
+    "Dementia Care East Sussex",
+    "Elderly Residential Care UK",
+    "Dementia-friendly Care Home",
+    "Senior Assisted Living Bexhill",
+    "Local Authority Preferred Care Provider",
   ],
 
-  authors: [{ name: "Medicare Link Team" }],
-  creator: "Medicare Link",
-  publisher: "Medicare Link",
+  authors: [{ name: "Elizabeth Court Rest Home Team" }],
+  creator: "Elizabeth Court Rest Home",
+  publisher: "Elizabeth Court Rest Home",
 
+  // Global Search Engine Crawler Rules
   robots: {
     index: true,
     follow: true,
@@ -59,6 +62,7 @@ export const metadata: Metadata = {
     },
   },
 
+  // App Icon Configurations (Placed inside your /public directory)
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -70,40 +74,44 @@ export const metadata: Metadata = {
     ],
   },
 
+  // Link to your PWA/Web App Manifest
   manifest: "/site.webmanifest",
 
+  // Global OpenGraph (Social Sharing Link Preview Config)
   openGraph: {
-    title: "Medicare Link | Trusted Healthcare & Home Care Services",
+    title: "Elizabeth Court Rest Home | Trusted Residential Care in East Sussex",
     description:
-      "Professional healthcare, home care, cleaning support, and staffing solutions delivered with compassion and care throughout the UK.",
-    url: "https://www.medicarelink.co.uk",
-    siteName: "Medicare Link",
+      "Compassionate, person-centred residential and dementia care provided within a homely, historic environment in Bexhill Old Town.",
+    url: "https://ecrh.co.uk/",
+    siteName: "Elizabeth Court Rest Home",
     images: [
       {
-        url: "/medicare-link.png",
+        url: "/home/12.jpg", 
         width: 1200,
         height: 630,
-        alt: "Medicare Link Healthcare Services",
+        alt: "Elizabeth Court Rest Home Exterior",
       },
     ],
     locale: "en_GB",
     type: "website",
   },
 
+  // Global Twitter/X Card Layout Config
   twitter: {
     card: "summary_large_image",
-    title: "Medicare Link | Healthcare & Home Care Services",
+    title: "Elizabeth Court Rest Home | Residential & Dementia Care",
     description:
-      "Compassionate healthcare, home care, staffing, and cleaning support services tailored to your needs.",
-    images: ["/medicare-link.png"],
+      "Providing expert care and a vibrant community in a dementia-friendly environment in Bexhill-on-Sea.",
+    images: ["/home/12.jpg"],
   },
 
+  // Prevents self-referential or duplicate content penalty flags
   alternates: {
-    canonical: "https://www.medicarelink.co.uk",
+    canonical: "https://ecrh.co.uk/",
   },
 
-  category: "healthcare",
-  applicationName: "Medicare Link",
+  category: "Healthcare & Residential Care",
+  applicationName: "Elizabeth Court Rest Home",
 };
 
 export default function RootLayout({

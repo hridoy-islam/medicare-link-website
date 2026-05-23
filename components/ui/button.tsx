@@ -9,7 +9,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "relative  overflow-hidden rounded-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-md " +
+          "relative  overflow-hidden rounded-none  bg-primary text-primary-foreground hover:bg-primary/90 shadow-md " +
           // The Glaze Effect Logic
           "after:absolute after:inset-0 after:z-10 after:translate-x-[-150%] after:bg-gradient-to-r after:from-transparent after:via-white after:to-transparent after:transition-transform after:duration-500 hover:after:translate-x-[150%]",
         destructive:

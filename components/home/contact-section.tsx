@@ -1,11 +1,10 @@
-// components/contact/contact-section.tsx
 "use client";
 
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Mail, MapPin, Phone, ArrowRight, CheckCircle2, Users, Calendar, PhoneCall, Briefcase } from "lucide-react";
+import { Mail, MapPin, Phone, ArrowRight, CheckCircle2, Navigation, MessageSquare, Info } from "lucide-react";
 import { cn } from "@/utils/utils";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -13,23 +12,17 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// Form validation schema
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
   email: z.string().email({ message: "Please enter a valid email address" }),
-  location: z.string().min(2, { message: "Please enter your location" }),
   phone: z.string().min(10, { message: "Please enter a valid phone number" }),
-  organisation: z.string().optional(),
-  services: z.array(z.string()).min(1, { message: "Please select at least one service" }),
-  inquiryType: z.string().min(1, { message: "Please select an option" }),
+  services: z.array(z.string()).min(1, { message: "Please select at least one department" }),
   message: z.string().min(10, { message: "Message must be at least 10 characters" }),
 });
 
@@ -37,16 +30,14 @@ type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 export function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const formRef = useRef<HTMLDivElement>(null);
-  const infoRef = useRef<HTMLDivElement>(null);
-  const mapRef = useRef<HTMLDivElement>(null);
+  const formCardRef = useRef<HTMLDivElement>(null);
+  const infoBlockRef = useRef<HTMLDivElement>(null);
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const {
     register,
     handleSubmit,
-    setValue,
     watch,
     formState: { errors, isSubmitting },
     reset,
@@ -55,84 +46,57 @@ export function ContactSection() {
     defaultValues: {
       name: "",
       email: "",
-      location: "",
       phone: "",
-      organisation: "",
       services: [],
-      inquiryType: "",
       message: "",
     }
   });
 
-  const selectedServices = watch("services");
-  const selectedInquiryType = watch("inquiryType");
+  // Watch services purely to drive visual styling safely
+  const watchedServices = watch("services") || [];
 
   const serviceOptions = [
-    { id: "personal-care", label: "Personal Care Service" },
-    { id: "cleaning-support", label: "Cleaning Support" },
-    { id: "healthcare-staffing", label: "Healthcare Staffing Service" },
-    { id: "other-services", label: "Other Services" },
-    { id: "free-assessment", label: "Book a free assessment"},
-    {id: "call-back", label: "I would like a call back"},
-    {id: "work-with-us", label: "I would like to work with Medicare Link"}
-    
+    { id: "general-enquiry", label: "General Care Enquiry" },
+    { id: "visit-booking", label: "Schedule Home Visit" },
+    { id: "career-opportunities", label: "Careers & Staffing Portals" },
+    { id: "feedback", label: "Provide Quality Feedback" },
   ];
 
- 
-
   const onSubmit = async (data: ContactFormValues) => {
-    console.log("Form data:", data);
-    
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
+    console.log("Submitted Data Profile:", data);
+    await new Promise(resolve => setTimeout(resolve, 1200));
     setIsSubmitted(true);
     reset();
-
-    setTimeout(() => setIsSubmitted(false), 3000);
+    setTimeout(() => setIsSubmitted(false), 4000);
   };
 
-  // GSAP Animation
-  useLayoutEffect(() => {
+  useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(infoRef.current,
-        { opacity: 0, x: -50 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 70%",
-          }
-        }
-      );
-
-      gsap.fromTo(formRef.current,
-        { opacity: 0, y: 50 },
+      gsap.fromTo(infoBlockRef.current,
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
           y: 0,
           duration: 0.8,
           ease: "power3.out",
-          delay: 0.2,
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 70%",
+            start: "top 75%",
           }
         }
       );
 
-      gsap.fromTo(mapRef.current,
-        { opacity: 0, scale: 0.95 },
+      gsap.fromTo(formCardRef.current,
+        { opacity: 0, y: 40 },
         {
           opacity: 1,
-          scale: 1,
-          duration: 0.7,
-          delay: 0.3,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          delay: 0.15,
           scrollTrigger: {
-            trigger: mapRef.current,
-            start: "top 80%",
+            trigger: sectionRef.current,
+            start: "top 75%",
           }
         }
       );
@@ -141,300 +105,259 @@ export function ContactSection() {
     return () => ctx.revert();
   }, []);
 
-  const handleServiceToggle = (serviceId: string) => {
-    const current = selectedServices || [];
-    if (current.includes(serviceId)) {
-      setValue("services", current.filter(id => id !== serviceId));
-    } else {
-      setValue("services", [...current, serviceId]);
-    }
-  };
-
-  const cleaningServices = [
-    "All Cleaning Support",
-    "Domestic Cleaning Service",
-    "End of Tenancy Cleaning",
-    "Event/Party Cleaning",
-    "Home Maid Service",
-    "Housekeeping Service",
-    "Move-In/Move-Out Cleaning",
-    "Office Cleaning",
-    "One-Off Cleaning Service",
-    "Spring Cleaning",
-    "Weekly Cleaners"
-  ];
-
-  const careServices = [
-    "All Healthcare Services",
-    "Companionship & Support",
-    "Domiciliary Care Support",
-    "Elderly Care",
-    "Alzheimer's & Dementia Care",
-    "Live In Care",
-    "Healthcare Staffing Service"
-  ];
-
-  const quickLinks = [
-    { name: "About Us", href: "/about" },
-    { name: "Contact Us", href: "/contact" },
-    { name: "Join Us", href: "/join" },
-    { name: "Our Service", href: "/services" }
-  ];
-
   return (
-    <section ref={sectionRef} className="relative py-24 lg:py-32 overflow-hidden bg-white">
-      <div className="container mx-auto px-4 md:px-6 max-w-7xl relative z-10">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Customer Feedback Form
-          </h1>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            We value your feedback and look forward to assisting you with your care needs
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-          
-          {/* --- LEFT SIDE: INFO --- */}
-          <div ref={infoRef} className="space-y-10 lg:pt-4">
-            <div className="space-y-6">
-              <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
-                <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
-                Contact Us
-              </div>
-              <h2 className="font-extrabold text-4xl md:text-5xl tracking-tight text-slate-900 leading-[1.1]">
-                Get in Touch
-                <br />
-                <span className="text-primary">With Our Team</span>
-              </h2>
-              <p className="font-medium text-lg leading-relaxed text-slate-600">
-                Fill out the form and we'll get back to you within 24 hours.
-              </p>
-            </div>
-
-            {/* Contact Details */}
-            <div className="space-y-6 pt-4">
-              <ContactItem 
-                icon={MapPin} 
-                title="Address" 
-                content="65 Cranbrook Road, Ilford, London, IG1 4PG, United Kingdom" 
-              />
-              <ContactItem 
-                icon={Phone} 
-                title="Phone" 
-                content="02030111145" 
-                href="tel:02030111145"
-              />
-              <ContactItem 
-                icon={Mail} 
-                title="Email" 
-                content="info@medicarelink.co.uk" 
-                href="mailto:info@medicarelink.co.uk"
-              />
-            </div>
-
-            {/* Office Hours */}
-            {/* <div className="pt-6 border-t border-slate-100">
-              <h3 className="font-semibold text-slate-800 mb-3 flex items-center gap-2">
-                <Users className="w-4 h-4 text-primary" />
-                Office Hours
-              </h3>
-              <p className="text-slate-600 text-sm">Monday - Friday: 9:00 AM - 6:00 PM</p>
-              <p className="text-slate-600 text-sm">Saturday: 10:00 AM - 4:00 PM</p>
-              <p className="text-slate-600 text-sm">Sunday: Closed (Emergency support available 24/7)</p>
-            </div> */}
-          </div>
-
-          {/* --- RIGHT SIDE: FORM --- */}
-          <div 
-            ref={formRef}
-            className="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-slate-100 relative group"
-          >
-            {/* Success Overlay */}
-            {isSubmitted && (
-              <div className="absolute inset-0 z-10 bg-white/95 backdrop-blur-sm rounded-3xl flex flex-col items-center justify-center text-center p-8 animate-in fade-in duration-300">
-                <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
-                  <CheckCircle2 size={32} />
+    <div>
+      <section ref={sectionRef} className="relative py-20 lg:py-32 overflow-hidden bg-white text-zinc-800">
+        <div className="container mx-auto relative z-10">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+            
+            {/* ─── LEFT PANEL: CONTACT INFO ─── */}
+            <div ref={infoBlockRef} className="lg:col-span-5 space-y-12 lg:sticky lg:top-28">
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
+                  <span className="flex h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+                  Communications Desk
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900">Thank You!</h3>
-                <p className="text-slate-500 mt-2">Your message has been sent successfully.</p>
-                <p className="text-slate-400 text-sm mt-1">We'll get back to you shortly.</p>
+                <h2 className="font-black text-4xl sm:text-5xl tracking-tight text-zinc-950 leading-[1.05]">
+                  Connecting <br />
+                  <span className="text-primary">Care & Community</span>
+                </h2>
+                <p className="font-light text-zinc-500 text-sm md:text-base leading-relaxed max-w-md">
+                  Reach out to our administrative hub for client placements, personal care consultations, or administrative inquiries.
+                </p>
               </div>
-            )}
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              {/* Name */}
-              <div className="space-y-2">
-                <Label htmlFor="name" className="text-slate-700 font-semibold">
-                  Name <span className="text-red-500">*</span>
-                </Label>
-                <Input 
-                  id="name"
-                  {...register("name")} 
-                  placeholder="Your full name" 
-                  className="h-12 bg-slate-50 border-slate-200 focus:bg-white focus:border-primary/50 transition-all rounded-lg"
+              <div className="space-y-6 border-l border-zinc-100 pl-4 py-2">
+                <ContactCard 
+                  icon={Phone} 
+                  title="Call Central Desk" 
+                  value="01424-219105" 
+                  href="tel:01424219105"
                 />
-                {errors.name && <p className="text-red-500 text-xs">{errors.name.message}</p>}
-              </div>
-
-              {/* Email */}
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-slate-700 font-semibold">
-                  Email Address <span className="text-red-500">*</span>
-                </Label>
-                <Input 
-                  id="email"
-                  {...register("email")} 
-                  type="email"
-                  placeholder="your@email.com" 
-                  className="h-12 bg-slate-50 border-slate-200 focus:bg-white focus:border-primary/50 transition-all rounded-lg"
+                <ContactCard 
+                  icon={MapPin} 
+                  title="Visit Our Premises" 
+                  value="4 Hastings Road, Bexhill-on-Sea, East Sussex, TN40 2HH" 
                 />
-                {errors.email && <p className="text-red-500 text-xs">{errors.email.message}</p>}
-              </div>
-
-              {/* Location */}
-              <div className="space-y-2">
-                <Label htmlFor="location" className="text-slate-700 font-semibold">
-                  Location (City/Town) <span className="text-red-500">*</span>
-                </Label>
-                <Input 
-                  id="location"
-                  {...register("location")} 
-                  placeholder="London, Manchester, etc." 
-                  className="h-12 bg-slate-50 border-slate-200 focus:bg-white focus:border-primary/50 transition-all rounded-lg"
-                />
-                {errors.location && <p className="text-red-500 text-xs">{errors.location.message}</p>}
-              </div>
-
-              {/* Telephone */}
-              <div className="space-y-2">
-                <Label htmlFor="phone" className="text-slate-700 font-semibold">
-                  Telephone Number <span className="text-red-500">*</span>
-                </Label>
-                <Input 
-                  id="phone"
-                  {...register("phone")} 
-                  type="tel"
-                  placeholder="020 1234 5678" 
-                  className="h-12 bg-slate-50 border-slate-200 focus:bg-white focus:border-primary/50 transition-all rounded-lg"
-                />
-                {errors.phone && <p className="text-red-500 text-xs">{errors.phone.message}</p>}
-              </div>
-
-              {/* Organisation */}
-              <div className="space-y-2">
-                <Label htmlFor="organisation" className="text-slate-700 font-semibold">
-                  Organisation (If applicable)
-                </Label>
-                <Input 
-                  id="organisation"
-                  {...register("organisation")} 
-                  placeholder="Your organisation name" 
-                  className="h-12 bg-slate-50 border-slate-200 focus:bg-white focus:border-primary/50 transition-all rounded-lg"
+                <ContactCard 
+                  icon={Mail} 
+                  title="Electronic Correspondence" 
+                  value="administration@elizabethcourt.co.uk" 
+                  href="mailto:administration@elizabethcourt.co.uk"
                 />
               </div>
 
-              {/* Services - Checkboxes */}
-              <div className="space-y-3">
-                <Label className="text-slate-700 font-semibold">
-                  I WOULD LIKE FURTHER INFORMATION ON: <span className="text-red-500">*</span>
-                </Label>
-                <div className="space-y-2">
-                  {serviceOptions.map((service) => (
-                    <div key={service.id} className="flex items-center space-x-2">
-                      <Checkbox
-                        id={service.id}
-                        checked={selectedServices?.includes(service.id)}
-                        onCheckedChange={() => handleServiceToggle(service.id)}
-                      />
-                      <Label htmlFor={service.id} className="text-slate-600 font-normal cursor-pointer">
-                        {service.label}
-                      </Label>
+              <div className="pt-2">
+                <a 
+                  href="https://maps.google.com" 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-zinc-950 hover:text-primary transition-colors group"
+                >
+                  <Navigation className="w-4 h-4 text-primary group-hover:rotate-12 transition-transform" />
+                  <span>Get Vector Directions</span>
+                  <ArrowRight className="w-3 h-3 transform group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            </div>
+
+            {/* ─── RIGHT PANEL: FORM INTERFACE ─── */}
+            <div ref={formCardRef} className="lg:col-span-7">
+              <div className="bg-zinc-50/50 border border-zinc-100 p-6 sm:p-10 rounded-2xl relative overflow-hidden backdrop-blur-md">
+                
+                {isSubmitted && (
+                  <div className="absolute inset-0 z-30 bg-white/95 backdrop-blur-md rounded-2xl flex flex-col items-center justify-center text-center p-6 animate-in fade-in duration-400">
+                    <div className="w-14 h-14 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-4 ring-4 ring-primary/5">
+                      <CheckCircle2 size={26} />
                     </div>
-                  ))}
-                </div>
-                {errors.services && <p className="text-red-500 text-xs">{errors.services.message}</p>}
-              </div>
-
-              
-
-              {/* Message */}
-              <div className="space-y-2">
-                <Label htmlFor="message" className="text-slate-700 font-semibold">
-                  Message <span className="text-red-500">*</span>
-                </Label>
-                <Textarea 
-                  id="message"
-                  {...register("message")} 
-                  placeholder="Please provide details about your requirements..." 
-                  className="bg-slate-50 border-slate-200 focus:bg-white focus:border-primary/50 transition-all rounded-lg min-h-[120px] resize-none p-4"
-                />
-                {errors.message && <p className="text-red-500 text-xs">{errors.message.message}</p>}
-              </div>
-
-              {/* Submit Button */}
-              <Button 
-                type="submit" 
-                disabled={isSubmitting}
-                size="lg"
-                className="w-full h-12 font-semibold text-base group bg-primary hover:bg-primary/90 rounded-lg"
-              >
-                {isSubmitting ? (
-                  <span className="flex items-center gap-2">
-                    <span className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    Sending...
-                  </span>
-                ) : (
-                  <span className="flex items-center gap-2">
-                    Submit
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                  </span>
+                    <h3 className="text-xl font-black tracking-tight text-zinc-900">Transmission Complete</h3>
+                    <p className="text-zinc-500 text-sm font-light mt-1 max-w-xs mx-auto">
+                      Your correspondence packet has been safely delivered to our care routing coordinators.
+                    </p>
+                  </div>
                 )}
-              </Button>
-            </form>
+
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="name" className="text-xs font-bold uppercase tracking-wider text-zinc-500">
+                        Full Name <span className="text-primary">*</span>
+                      </Label>
+                      <Input 
+                        id="name"
+                        {...register("name")} 
+                        placeholder="Jane Doe" 
+                        className="h-11 bg-white border-zinc-200 focus:border-primary/50 transition-all rounded-lg text-sm shadow-none focus-visible:ring-primary/10"
+                      />
+                      {errors.name && <p className="text-red-500 text-xs font-medium">{errors.name.message}</p>}
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="phone" className="text-xs font-bold uppercase tracking-wider text-zinc-500">
+                        Contact Line <span className="text-primary">*</span>
+                      </Label>
+                      <Input 
+                        id="phone"
+                        {...register("phone")} 
+                        type="tel"
+                        placeholder="01424 000000" 
+                        className="h-11 bg-white border-zinc-200 focus:border-primary/50 transition-all rounded-lg text-sm shadow-none focus-visible:ring-primary/10"
+                      />
+                      {errors.phone && <p className="text-red-500 text-xs font-medium">{errors.phone.message}</p>}
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="email" className="text-xs font-bold uppercase tracking-wider text-zinc-500">
+                      Email Address <span className="text-primary">*</span>
+                    </Label>
+                    <Input 
+                      id="email"
+                      {...register("email")} 
+                      type="email"
+                      placeholder="jane.doe@example.com" 
+                      className="h-11 bg-white border-zinc-200 focus:border-primary/50 transition-all rounded-lg text-sm shadow-none focus-visible:ring-primary/10"
+                    />
+                    {errors.email && <p className="text-red-500 text-xs font-medium">{errors.email.message}</p>}
+                  </div>
+
+                  {/* ─── FIX: THE PERMANENT REMEDY FOR THE LOOP ─── */}
+                  {/* Using native native check array structures allows hook-form to completely intercept loop errors */}
+                  <div className="space-y-3 pt-2">
+                    <Label className="text-xs font-bold uppercase tracking-wider text-zinc-500 flex items-center gap-1">
+                      <MessageSquare className="w-3 h-3 text-primary" /> Select Target Department <span className="text-primary">*</span>
+                    </Label>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {serviceOptions.map((service) => {
+                        const isChecked = watchedServices.includes(service.id);
+                        return (
+                          <label 
+                            key={service.id} 
+                            htmlFor={service.id}
+                            className={cn(
+                              "flex items-center space-x-3 p-3 bg-white border rounded-xl cursor-pointer select-none transition-all duration-200",
+                              isChecked 
+                                ? "border-primary/40 ring-2 ring-primary/5 bg-primary/[0.01]" 
+                                : "border-zinc-200 hover:border-zinc-300"
+                            )}
+                          >
+                            <input
+                              type="checkbox"
+                              id={service.id}
+                              value={service.id}
+                              {...register("services")}
+                              className="h-4 w-4 rounded border-zinc-300 text-primary focus:ring-primary/20 accent-primary"
+                            />
+                            <span className="text-zinc-700 text-xs font-medium cursor-pointer">
+                              {service.label}
+                            </span>
+                          </label>
+                        );
+                      })}
+                    </div>
+                    {errors.services && <p className="text-red-500 text-xs font-medium pt-1">{errors.services.message}</p>}
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="message" className="text-xs font-bold uppercase tracking-wider text-zinc-500">
+                      Your Message <span className="text-primary">*</span>
+                    </Label>
+                    <Textarea 
+                      id="message"
+                      {...register("message")} 
+                      placeholder="Provide clear specifications here regarding details..." 
+                      className="bg-white border-zinc-200 focus:border-primary/50 transition-all rounded-lg min-h-[130px] resize-none text-sm p-4 focus-visible:ring-primary/10 shadow-none"
+                    />
+                    {errors.message && <p className="text-red-500 text-xs font-medium">{errors.message.message}</p>}
+                  </div>
+
+                  <Button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="w-full sm:w-auto h-12 px-6 font-bold uppercase tracking-wider text-xs bg-primary hover:bg-primary/95 text-white rounded shadow-sm transition-all active:scale-[0.99]"
+                  >
+                    {isSubmitting ? (
+                      <span className="flex items-center gap-2">
+                        <span className="h-3.5 w-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        Routing Packet...
+                      </span>
+                    ) : (
+                      <span className="flex items-center gap-1.5">
+                        Transmit Request
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </span>
+                    )}
+                  </Button>
+                </form>
+              </div>
+            </div>
+
           </div>
         </div>
+      </section>
 
-        {/* --- MAP SECTION --- */}
-        <div ref={mapRef} className="mt-20">
-          <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-100 h-[300px] md:h-[400px] w-full">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.123456789012!2d0.067891!3d51.558765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a7a7a7a7a7a7%3A0x123456789abcdef!2s65%20Cranbrook%20Rd%2C%20Ilford%2C%20London%20IG1%204PG%2C%20UK!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Medicare Link Location Map"
-            />
-          </div>
-        </div>
-
-     
-      </div>
-    </section>
+       {/* ================= GOOGLE MAPS SECTION ================= */}
+              <div className="scroll-section w-full bg-white relative fade-up-element">
+                <div className="">
+                  <div className="w-full h-[460px] bg-slate-900 relative overflow-hidden shadow-xl  grayscale hover:grayscale-0 transition-all duration-1000">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2516.3245!2d0.731!3d50.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDU3JzAwLjAiTiAwwrA0Myc1MS42IkU!5e0!3m2!1sen!2suk!4v1620000000000!5m2!1sen!2suk"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen={false}
+                      loading="lazy"
+                      title="Official Elizabeth Court Location Map Verification Frame"
+                      className="opacity-90 hover:opacity-100 transition-opacity duration-500"
+                    />
+                  </div>
+                </div>
+      
+                <div className="bg-slate-950 text-white border-t-4 border-primary py-7">
+                  <div className="container mx-auto px-6 lg:px-12 flex items-center justify-center gap-4 text-center sm:text-left sm:justify-start">
+                    <Info className="w-5 h-5 text-primary shrink-0" />
+                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium tracking-wide">
+                      <strong className="text-white font-semibold">
+                        Route Notice:
+                      </strong>{" "}
+                      Certain map application pins calculate directions with a slight
+                      coordinate shift. We are mapped directly on{" "}
+                      <strong className="text-primary font-bold">
+                        Hastings Road
+                      </strong>{" "}
+                      on the southern edge of King Offa Way, looking across at
+                      Greenbank.
+                    </p>
+                  </div>
+                </div>
+              </div>
+    </div>
   );
 }
 
-// Contact Item Component
-function ContactItem({ icon: Icon, title, content, href }: { icon: any; title: string; content: string; href?: string }) {
-  const Wrapper = href ? "a" : "div";
+function ContactCard({ icon: Icon, title, value, href }: { icon: any; title: string; value: string; href?: string }) {
+  const CardTag = href ? "a" : "div";
   return (
-    <Wrapper 
+    <CardTag 
       href={href} 
       className={cn(
-        "flex items-start gap-4 group",
-        href && "hover:opacity-80 transition-opacity cursor-pointer"
+        "flex gap-4 items-start py-1 group",
+        href && "cursor-pointer"
       )}
     >
-      <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
-        <Icon size={18} />
+      <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-zinc-50 border border-zinc-100 group-hover:border-primary/20 flex items-center justify-center text-zinc-500 group-hover:text-primary group-hover:scale-105 transition-all duration-300 shadow-2xs">
+        <Icon size={15} className="stroke-[1.75]" />
       </div>
-      <div>
-        <h4 className="font-semibold text-slate-700 text-sm mb-0.5">{title}</h4>
-        <p className="text-slate-800 text-base">{content}</p>
+      <div className="space-y-0.5">
+        <h4 className="text-[11px] font-bold tracking-wider uppercase text-zinc-400">{title}</h4>
+        <p className={cn(
+          "text-sm font-medium tracking-tight text-zinc-800 transition-colors",
+          href && "group-hover:text-primary group-hover:underline decoration-primary/30 underline-offset-4"
+        )}>
+          {value}
+        </p>
       </div>
-    </Wrapper>
+    </CardTag>
   );
 }

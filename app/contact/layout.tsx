@@ -4,33 +4,31 @@ export const metadata: Metadata = {
   title: "Contact Us",
 
   description:
-    "Get in touch with Medicare Link — a UK-based healthcare and home care service provider. Contact us for home care support, healthcare staffing, cleaning services, and personalized care solutions tailored to your needs.",
+    "Get in touch with the communications desk at Elizabeth Court Rest Home (ECRH) in Bexhill-on-Sea. Contact us for admissions, care consultations, administrative inquiries, or to arrange a home visit.",
 
   keywords: [
-    "Contact Medicare Link",
-    "Healthcare Contact UK",
-    "Home Care Support Contact",
-    "Care Agency UK Contact",
-    "Healthcare Staffing Contact",
-    "Elderly Care Help UK",
-    "Home Care Services Inquiry",
-    "Cleaning Support Contact UK",
-    "Caregivers Support UK",
-    "Medicare Link Contact Details",
+    "Contact Elizabeth Court Rest Home",
+    "Elizabeth Court Bexhill Phone Number",
+    "Care Home Admissions Bexhill",
+    "Elizabeth Court Rest Home Address",
+    "Bexhill Old Town Care Home Contact",
+    "Dementia Care Enquiries East Sussex",
+    "Schedule Care Home Visit Bexhill",
+    "ECRH Administration Email",
   ],
 
   openGraph: {
-    title: "Contact Medicare Link | Healthcare & Home Care Support UK",
+    title: "Contact Us | Elizabeth Court Rest Home",
     description:
-      "Reach out to Medicare Link for professional healthcare, home care, staffing, and cleaning support services across the UK. We’re here to help you 24/7 with compassionate care solutions.",
-    url: "https://www.medicarelink.co.uk/contact",
-    siteName: "Medicare Link",
+      "Reach out to our administrative hub in Bexhill Old Town for client placements, residential care consultations, and general care inquiries.",
+    url: "https://ecrh.co.uk/contact",
+    siteName: "Elizabeth Court Rest Home",
     images: [
       {
-        url: "/medicare-link.png",
+        url: "/home/1.jpg",
         width: 1200,
         height: 630,
-        alt: "Contact Medicare Link Healthcare Services",
+        alt: "Contact Elizabeth Court Rest Home Communications Desk",
       },
     ],
     locale: "en_GB",
@@ -39,14 +37,14 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Contact Medicare Link | Healthcare & Home Care Services UK",
+    title: "Contact Us | Elizabeth Court Rest Home",
     description:
-      "Contact Medicare Link for trusted healthcare, home care, staffing, and cleaning support services across the UK.",
-    images: ["/medicare-link.png"],
+      "Get in touch with our team for residential placement options, general enquiries, or location details in Bexhill-on-Sea.",
+    images: ["/home/1.jpg"],
   },
 
   alternates: {
-    canonical: "https://www.medicarelink.co.uk/contact",
+    canonical: "https://ecrh.co.uk/contact",
   },
 };
 

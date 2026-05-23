@@ -7,139 +7,67 @@ import { MapPin, Phone, Mail, ChevronRight } from "lucide-react";
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const cleaningServices = [
-    { label: "One Off Cleaning", href: "/services/one-off-cleaning-service" },
-    { label: "Weekly Cleaning", href: "/services/weekly-cleaning" },
-    { label: "Spring Cleaning", href: "/services/spring-cleaning" },
-    { label: "Office Cleaning", href: "/services/office-cleaning-service" },
-    { label: "Move In/Out Cleaning", href: "/services/move-in-move-out-cleaning" },
-    { label: "House Keeping", href: "/services/housekeeping-service" },
-    { label: "Home Maid Service", href: "/services/home-maid-service" },
-    { label: "Event Party Cleaning", href: "/services/event-party-cleaning" },
-    { label: "End of Tenancy Cleaning", href: "/services/end-of-tenancy-cleaning" },
-    { label: "Domestic Cleaning", href: "/services/domestic-cleaning-service" },
-    { label: "Cleaning Support", href: "/services/cleaning-support" },
-  ];
-
-  const careServices = [
-    { label: "Healthcare Service", href: "/services/healthcare-service" },
-    { label: "Healthcare Staffing", href: "/services/healthcare-staffing-service" },
-    { label: "Respite Care", href: "/services/respite-care" },
-    { label: "Residential Care", href: "/services/residential-care" },
-    { label: "Palliative Care", href: "/services/palliative-care" },
-    { label: "Mental Health Care", href: "/services/mental-health-care" },
-    { label: "Live In Care", href: "/services/live-in-care" },
-    { label: "Disability Support", href: "/services/learning-disability-care" },
-    { label: "Elderly Care", href: "/services/elderly-care" },
-    { label: "Domiciliary Care", href: "/services/domiciliary-care" },
-    { label: "Companionship & Support", href: "/services/companionship-and-support" },
-    { label: "Alzheimer's & Dementia Care", href: "/services/alzheimers-dementia-care" },
-    { label: "Acquired Brain Injury", href: "/services/acquired-brain-injury" },
-  ];
-
-  const quickLinks = [
-    { label: "About Us", href: "/about" },
-    { label: "Join Medicare Link", href: "/join-medicare-link" },
+  const navItems = [
+    { label: "Home", href: "/" },
+    { label: "About & Services", href: "/about" },
+    { label: "Gallery", href: "/gallery" },
+    { label: "Apply", href: "/apply" },
+    { label: "Useful Links", href: "/useful-links" },
     { label: "Contact Us", href: "/contact" },
-    { label: "All Services", href: "/services" },
   ];
+
 
   const contactInfo = {
-      name: "Medicare Link ",
-  description: "Medicare Link provides compassionate healthcare, home care, cleaning support, and healthcare staffing services across the UK. Our fully qualified caregivers deliver personalized, professional, and empathetic care tailored to every client’s needs.",
-  address: "65 Cranbrook Road,Ilford, London, IG1 4PG, United Kingdom",
-  phone: "02030111145",
-  email: "info@medicarelink.co.uk",
+    name: "Elizabeth Court Rest Home",
+    description: "Elizabeth Court Rest Home provides compassionate residential care in a warm, welcoming environment. Our dedicated team ensures personalized care tailored to each resident's needs.",
+    address: "4 Hastings Road, Bexhill-on-Sea, East Sussex, TN40 2HH",
+    phone: "01424-219105",
+    email: "info@elizabethcourtresthome.co.uk",
   };
 
   return (
-    <footer className="relative bg-gradient-to-br from-primary to-red-950  text-white pt-20 pb-10 overflow-hidden">
+    <footer className="relative bg-primary text-white pt-20 pb-10 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5" />
       
       {/* Decorative Elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-red-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
       
-      <div className="container relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8">
           
           {/* Brand Column */}
           <div className="space-y-6">
-            <Link href="/" className="block relative h-16 w-56">
-             <Image
-  src="/medicare-link-white.png"
-  alt="Medicare Link - Trusted Healthcare Services"
-  fill
-  className="object-contain object-left scale-120 brightness-0 invert transition-all duration-500"
-  priority
-/>
+            <Link href="/" className="block relative h-28 w-72">
+              <Image
+                src="/logo.png"
+                alt="Elizabeth Court Rest Home - Residential Care Services"
+                fill
+                className="object-contain object-left  transition-all duration-500"
+                priority
+              />
             </Link>
-            <p className="text-slate-100 text-[15px] leading-relaxed font-medium pr-4">
-              Your trusted partner for professional cleaning and healthcare services. 
-              We provide compassionate care and exceptional cleaning solutions tailored to your needs.
+            <p className="text-white/80 text-[15px] leading-relaxed font-medium pr-4">
+              {contactInfo.description}
             </p>
-            
-            {/* Quick Links in Brand Column for Mobile */}
-            <div className="space-y-3">
-              <h4 className="text-white font-bold text-lg tracking-wider uppercase relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-white/30">
-                Quick Links
-              </h4>
-              <ul className="space-y-2.5">
-                {quickLinks.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="group flex items-center gap-2 text-slate-100 hover:text-white transition-all duration-300"
-                    >
-                      <ChevronRight size={14} className="text-white/50 group-hover:translate-x-1 group-hover:text-white transition-all" />
-                      <span className="text-[15px] font-medium">
-                        {link.label}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
 
-          {/* Cleaning Services Column */}
+          {/* Navigation Column */}
           <div className="space-y-6">
             <h4 className="text-white font-bold text-lg tracking-wider uppercase relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-white/30">
-              Cleaning Services
+              Quick Links
             </h4>
             <ul className="space-y-2.5">
-              {cleaningServices.map((service) => (
-                <li key={service.href}>
+              {navItems.map((item) => (
+                <li key={item.href}>
                   <Link
-                    href={service.href}
-                    className="group flex items-center gap-2 text-slate-100 hover:text-white transition-all duration-300"
+                    href={item.href}
+                    className="group flex items-center gap-2 text-white/80 hover:text-white transition-all duration-300"
                   >
                     <ChevronRight size={14} className="text-white/50 group-hover:translate-x-1 group-hover:text-white transition-all" />
                     <span className="text-[15px] font-medium">
-                      {service.label}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Care Services Column */}
-          <div className="space-y-6">
-            <h4 className="text-white font-bold text-lg tracking-wider uppercase relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-white/30">
-              Care Services
-            </h4>
-            <ul className="space-y-2.5">
-              {careServices.map((service) => (
-                <li key={service.href}>
-                  <Link
-                    href={service.href}
-                    className="group flex items-center gap-2 text-slate-100 hover:text-white transition-all duration-300"
-                  >
-                    <ChevronRight size={14} className="text-white/90 group-hover:translate-x-1 group-hover:text-white transition-all" />
-                    <span className="text-[15px] font-medium">
-                      {service.label}
+                      {item.label}
                     </span>
                   </Link>
                 </li>
@@ -158,8 +86,8 @@ export function Footer() {
                   <MapPin size={20} className="text-white" />
                 </div>
                 <div>
-                  <p className="text-white font-semibold mb-1 uppercase tracking-wider text-[11px]">Location</p>
-                  <span className="text-[14px] font-medium text-slate-200 leading-relaxed">
+                  <p className="text-white font-semibold mb-1 uppercase tracking-wider text-[11px] opacity-75">Location</p>
+                  <span className="text-[14px] font-medium text-white/90 leading-relaxed">
                     {contactInfo.address}
                   </span>
                 </div>
@@ -170,10 +98,10 @@ export function Footer() {
                   <Phone size={20} className="text-white" />
                 </div>
                 <div>
-                  <p className="text-white font-semibold mb-1 uppercase tracking-wider text-[11px]">Phone</p>
+                  <p className="text-white font-semibold mb-1 uppercase tracking-wider text-[11px] opacity-75">Phone</p>
                   <a 
                     href={`tel:${contactInfo.phone}`}
-                    className="text-[14px] font-medium text-slate-200 hover:text-white transition-colors"
+                    className="text-[14px] font-medium text-white/90 hover:text-white underline-offset-4 hover:underline transition-colors"
                   >
                     {contactInfo.phone}
                   </a>
@@ -185,10 +113,10 @@ export function Footer() {
                   <Mail size={20} className="text-white" />
                 </div>
                 <div>
-                  <p className="text-white font-semibold mb-1 uppercase tracking-wider text-[11px]">Email</p>
+                  <p className="text-white font-semibold mb-1 uppercase tracking-wider text-[11px] opacity-75">Email</p>
                   <a 
                     href={`mailto:${contactInfo.email}`}
-                    className="text-[14px] font-medium text-slate-200 hover:text-white transition-colors"
+                    className="text-[14px] font-medium text-white/90 hover:text-white underline-offset-4 hover:underline transition-colors"
                   >
                     {contactInfo.email}
                   </a>
@@ -200,30 +128,16 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-white/10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-white text-center md:text-left">
-              &copy; {currentYear} Medicare Link. All rights reserved.
+          <div className="flex flex-col lg:flex-row justify-between items-center gap-4 text-center lg:text-left">
+            <p className="text-sm text-white/70">
+              &copy; Copyright 2004-{currentYear} - Elizabeth Court Rest Home Ltd
             </p>
-            {/* <div className="flex flex-wrap justify-center gap-6">
-              <Link 
-                href="/privacy-policy" 
-                className="text-sm text-white hover:text-white transition-colors"
-              >
-                Privacy Policy
-              </Link>
-              <Link 
-                href="/terms-of-service" 
-                className="text-sm text-white hover:text-white transition-colors"
-              >
-                Terms of Service
-              </Link>
-              <Link 
-                href="/cookie-policy" 
-                className="text-sm text-white hover:text-white transition-colors"
-              >
-                Cookie Policy
-              </Link>
-            </div> */}
+            <p className="text-sm text-white/70">
+              Elizabeth Court Rest Home Ltd. Company No 5550795.
+            </p>
+            <p className="text-sm text-white/70">
+              Registered Office GMP Accountants, 24 Landgate, Rye, East Sussex TN31 7LJ
+            </p>
           </div>
         </div>
       </div>

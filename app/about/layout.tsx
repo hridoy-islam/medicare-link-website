@@ -4,33 +4,31 @@ export const metadata: Metadata = {
   title: "About Us",
 
   description:
-    "Learn more about Medicare Link — a UK-based healthcare and home care service provider delivering compassionate care, staffing solutions, cleaning support, and personalized assistance to individuals and families across the UK.",
+    "Discover the history, ethos, and care teams behind Elizabeth Court Rest Home (ECRH) in Bexhill Old Town. Providing specialized dementia-friendly residential care and person-centred support in East Sussex.",
 
   keywords: [
-    "About Medicare Link",
-    "Medicare Link Team",
-    "Healthcare Services UK",
-    "Home Care Agency UK",
-    "Caregivers UK",
-    "Elderly Care Support",
-    "Healthcare Staffing UK",
-    "Cleaning Support Services",
-    "Personal Care Services",
-    "Compassionate Care UK",
+    "About Elizabeth Court Rest Home",
+    "ECRH Care Team",
+    "Residential Care History Bexhill",
+    "Dementia Specialism East Sussex",
+    "Bexhill Old Town Care Home",
+    "Person-Centred Care Ethos",
+    "Registered Care Association Board Member",
+    "East Sussex County Council Care",
   ],
 
   openGraph: {
-    title: "About Medicare Link | Trusted Healthcare & Home Care Services",
+    title: "About Us | Elizabeth Court Rest Home",
     description:
-      "Discover Medicare Link’s mission, values, and dedicated care team. We provide professional healthcare, home care, staffing, and cleaning support services across the UK.",
-    url: "https://www.medicarelink.co.uk/about",
-    siteName: "Medicare Link",
+      "Meet the team, explore our 16th-century dementia-friendly premises, and discover our core ethos of person-centred residential care in Bexhill Old Town.",
+    url: "https://ecrh.co.uk/about",
+    siteName: "Elizabeth Court Rest Home",
     images: [
       {
-        url: "/medicare-link.png",
+        url: "/home/1.jpg",
         width: 1200,
         height: 630,
-        alt: "About Medicare Link Healthcare Services",
+        alt: "About Elizabeth Court Rest Home - Historic Building in Bexhill",
       },
     ],
     locale: "en_GB",
@@ -39,14 +37,14 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "About Medicare Link | Healthcare & Home Care Services UK",
+    title: "About Us | Elizabeth Court Rest Home",
     description:
-      "Meet the team behind Medicare Link — delivering compassionate healthcare, home care, and staffing solutions across the UK.",
-    images: ["/medicare-link.png"],
+      "Discover our specialized, dementia-friendly home environment and dedicated care teams in Bexhill-on-Sea.",
+    images: ["/home/1.jpg"],
   },
 
   alternates: {
-    canonical: "https://www.medicarelink.co.uk/about",
+    canonical: "https://ecrh.co.uk/about",
   },
 };
 

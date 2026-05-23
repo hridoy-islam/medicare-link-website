@@ -3,370 +3,229 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/utils/utils";
-import { siteConfig } from "@/utils/site-data";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+const NAV_ITEMS = [
+  { label: "Home", href: "/" },
+  { label: "About & Services", href: "/about" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Apply", href: "/apply" },
+  { label: "Useful Links", href: "/useful-links" },
+  { label: "Contact Us", href: "/contact" },
+];
 
 export function Header() {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [servicesOpen, setServicesOpen] = React.useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = React.useState(false);
-  const [scrolled, setScrolled] = React.useState(false);
+  const pathname = usePathname();
+  
+  // Element Refs for GSAP
+  const headerRef = React.useRef<HTMLElement>(null);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const logoRef = React.useRef<HTMLDivElement>(null);
+  const mobileMenuRef = React.useRef<HTMLDivElement>(null);
+  const mobileItemsRef = React.useRef<HTMLDivElement>(null);
 
+  // 1. Scroll-triggered Header Morph (Fixed Shake)
   React.useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const header = headerRef.current;
+    const container = containerRef.current;
+    const logo = logoRef.current;
+    if (!header || !container || !logo) return;
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const ctx = gsap.context(() => {
+      // Pinning the animation purely to the window scroll offset rather than the 'body' height
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: document.documentElement,
+          start: "top+=10 top", 
+          end: "top+=11 top",
+          // toggleActions removes 'scrub' lag which causes the shaking
+          toggleActions: "play none none reverse", 
+        },
+      })
+      .to(header, {
+        backgroundColor: "rgba(255, 255, 255, 0.92)",
+        backdropFilter: "blur(16px)",
+        boxShadow: "0 10px 30px -10px rgba(0, 0, 0, 0.05)",
+        borderBottomColor: "rgba(226, 232, 240, 0.8)",
+        duration: 0.25,
+        ease: "power2.out"
+      }, 0)
+      .to(container, {
+        paddingTop: "0.75rem",
+        paddingBottom: "0.75rem",
+        duration: 0.25,
+        ease: "power2.out"
+      }, 0)
+      .to(logo, {
+        scale: 0.92,
+        duration: 0.25,
+        ease: "power2.out"
+      }, 0);
+    });
+
+    return () => ctx.revert();
   }, []);
 
-  const cleaningServices = [
-    {
-      label: "One Off Cleaning Service",
-      href: "/services/one-off-cleaning-service",
-    },
-    {
-      label: "Weekly Cleaning",
-      href: "/services/weekly-cleaning",
-    },
-    {
-      label: "Spring Cleaning",
-      href: "/services/spring-cleaning",
-    },
-    {
-      label: "Office Cleaning Service",
-      href: "/services/office-cleaning-service",
-    },
-    {
-      label: "Move In Move Out Cleaning",
-      href: "/services/move-in-move-out-cleaning",
-    },
-    {
-      label: "House Keeping Service",
-      href: "/services/housekeeping-service",
-    },
-    {
-      label: "Home Maid Service",
-      href: "/services/home-maid-service",
-    },
-    {
-      label: "Event Party Cleaning",
-      href: "/services/event-party-cleaning",
-    },
-    {
-      label: "End of Tenancy Cleaning",
-      href: "/services/end-of-tenancy-cleaning",
-    },
-    {
-      label: "Domestic Cleaning Service",
-      href: "/services/domestic-cleaning-service",
-    },
-    {
-      label: "Cleaning Support",
-      href: "/services/cleaning-support",
-    },
-  ];
+  // 2. Mobile Menu Animation
+  React.useEffect(() => {
+    const menu = mobileMenuRef.current;
+    const itemsContainer = mobileItemsRef.current;
+    if (!menu || !itemsContainer) return;
 
-  const careServices = [
-    {
-      label: "Healthcare Service",
-      href: "/services/healthcare-service",
-    },
-    {
-      label: "Healthcare Staffing Service",
-      href: "/services/healthcare-staffing-service",
-    },
-    {
-      label: "Healthcare Staffing",
-      href: "/services/healthcare-staffing",
-    },
-    {
-      label: "Respite Care",
-      href: "/services/respite-care",
-    },
-    {
-      label: "Residential Care",
-      href: "/services/residential-care",
-    },
-    {
-      label: "Palliative & End of Life Care",
-      href: "/services/palliative-care",
-    },
-    {
-      label: "Mental Health Care",
-      href: "/services/mental-health-care",
-    },
-    {
-      label: "Live In Care",
-      href: "/services/live-in-care",
-    },
-    {
-      label: "Disability Support",
-      href: "/services/learning-disability-care",
-    },
-    {
-      label: "Elderly Care",
-      href: "/services/elderly-care",
-    },
-    {
-      label: "Domiciliary Care",
-      href: "/services/domiciliary-care",
-    },
-    {
-      label: "Companionship and Support",
-      href: "/services/companionship-and-support",
-    },
-    {
-      label: "Alzheimer's & Dementia Care",
-      href: "/services/alzheimers-dementia-care",
-    },
-    {
-      label: "Acquired Brain Injury",
-      href: "/services/acquired-brain-injury",
-    },
-    {
-      label: "Learning Disability Care",
-      href: "/services/learning-disability-care",
-    },
-  ];
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+      gsap.killTweensOf([menu, itemsContainer.children]);
+      
+      gsap.timeline()
+        .to(menu, {
+          height: "calc(100vh - 100%)",
+          opacity: 1,
+          duration: 0.4,
+          ease: "power3.out",
+        })
+        .fromTo(
+          itemsContainer.children,
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.3, stagger: 0.04, ease: "power2.out" },
+          "-=0.25"
+        );
+    } else {
+      document.body.style.overflow = "unset";
+      gsap.killTweensOf([menu, itemsContainer.children]);
+      
+      gsap.timeline()
+        .to(itemsContainer.children, {
+          opacity: 0,
+          y: -10,
+          duration: 0.15,
+          stagger: 0.02,
+        })
+        .to(menu, {
+          height: 0,
+          opacity: 0,
+          duration: 0.3,
+          ease: "power3.inOut",
+        }, "-=0.1");
+    }
 
-  const handleServiceClick = () => {
-    setServicesOpen(false);
-    setIsOpen(false);
-    setMobileServicesOpen(false);
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const line = e.currentTarget.querySelector(".nav-line");
+    if (line) gsap.to(line, { width: "100%", left: "0%", duration: 0.25, ease: "power2.out" });
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLAnchorElement>, isActive: boolean) => {
+    if (isActive) return;
+    const line = e.currentTarget.querySelector(".nav-line");
+    if (line) gsap.to(line, { width: "0%", left: "50%", duration: 0.25, ease: "power2.in" });
   };
 
   return (
-    <div className="fixed top-0 z-50 w-full">
+    <div className="fixed top-0 left-0 right-0 z-50 w-full forward-render">
       <header
-        className={cn(
-          "w-full bg-white/95 backdrop-blur-xl border-b border-slate-200 transition-all duration-300",
-          scrolled ? "py-2 shadow-xs" : "py-4",
-        )}
+        ref={headerRef}
+        className="w-full bg-white border-b border-slate-200 will-change-transform !shadow-sm"
       >
-        <div className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center justify-end">
-            <Link href="/" className="relative block">
-              <div
-                className={cn(
-                  "relative transition-all duration-300",
-                  scrolled
-                    ? "h-10 w-40 md:h-12 md:w-44"
-                    : "h-12 w-44 md:h-14 md:w-52",
-                )}
-              >
+        <div
+          ref={containerRef}
+          className="container mx-auto py-5 flex items-center justify-between transition-[padding] duration-75"
+        >
+          {/* BRAND LOGO */}
+          <div ref={logoRef} className="flex items-center origin-left will-change-transform">
+            <Link href="/" className="relative block group">
+              <div className="relative h-10 w-40 md:h-16 md:w-64 transition-transform duration-300 group-hover:scale-[1.01]">
                 <Image
-                  src="/medicare-link.webp"
-                  alt="Medicare Link Logo"
+                  src="/logo.png"
+                  alt="ELIZABETH COURT REST HOME Logo"
                   fill
                   priority
-                  className="object-contain object-right scale-150"
+                  className="object-contain object-left"
                 />
               </div>
             </Link>
           </div>
-          <nav className="hidden lg:flex items-center gap-8">
-            <Link
-              href="/"
-              className="font-semibold text-md   tracking-[1.5px]  text-slate-800 hover:text-primary transition-colors"
-            >
-              Home
-            </Link>
 
-            <Link
-              href="/about"
-              className="font-semibold text-md   tracking-[1.5px]  text-slate-800 hover:text-primary transition-colors"
-            >
-              About Us
-            </Link>
-            <Link
-              href="/join-medicare-link"
-              className="font-semibold  tracking-[1.5px] text-md text-slate-800 hover:text-primary transition-colors"
-            >
-              Join Medicare Link
-            </Link>
-
-            {/* SERVICES DROPDOWN - SEPARATED INTO CLEANING & CARE */}
-            <div
-              className="relative"
-              onMouseEnter={() => setServicesOpen(true)}
-              onMouseLeave={() => setServicesOpen(false)}
-            >
-              <Link
-                href="/services"
-                className="flex items-center gap-1 font-semibold  tracking-[1.5px] text-md text-slate-800 hover:text-primary transition-colors"
-              >
-                Services
-                <ChevronDown size={16} />
-              </Link>
-
-              {servicesOpen && (
-                <div className="absolute right-2 top-full pt-3">
-                  <div className="w-[48rem] rounded-xl border border-slate-100 bg-white shadow-xl grid grid-cols-2 gap-6 p-6">
-                    {/* Cleaning Services Column */}
-                    <div>
-                      <h3 className="text-md font-bold  tracking-[2px] text-primary mb-4 px-1">
-                        Cleaning Services
-                      </h3>
-                      <div className="flex flex-col gap-0.5">
-                        {cleaningServices.map((service) => (
-                          <Link
-                            key={service.href}
-                            href={service.href}
-                            onClick={handleServiceClick}
-                            className="block px-3 py-2 text-md font-medium text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors rounded-md"
-                          >
-                            {service.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Care Services Column */}
-                    <div>
-                      <h3 className="text-md font-bold  tracking-[2px] text-primary mb-4 px-1">
-                        Care Services
-                      </h3>
-                      <div className="flex flex-col gap-0.5">
-                        {careServices.map((service) => (
-                          <Link
-                            key={service.href}
-                            href={service.href}
-                            onClick={handleServiceClick}
-                            className="block px-3 py-2 text-md font-medium text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors rounded-md"
-                          >
-                            {service.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            <Link
-              href="/contact"
-              className="font-semibold  tracking-[1.5px] text-md text-slate-800 hover:text-primary transition-colors"
-            >
-              Contact Us
-            </Link>
+          {/* DESKTOP LINKS */}
+          <nav className="hidden lg:flex items-center gap-2">
+            {NAV_ITEMS.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={(e) => handleMouseLeave(e, isActive)}
+                  className={cn(
+                    "relative px-4 py-2 font-bold text-md tracking-[2px]  transition-colors duration-200",
+                    isActive ? "text-primary" : "text-slate-600 hover:text-primary"
+                  )}
+                >
+                  <span className="relative z-10">{item.label}</span>
+                  {/* GSAP Managed Micro-line Indicator */}
+                  <span 
+                    className="nav-line absolute bottom-0 h-[2px] bg-primary transition-all"
+                    style={{
+                      width: isActive ? "100%" : "0%",
+                      left: isActive ? "0%" : "50%",
+                    }}
+                  />
+                </Link>
+              );
+            })}
           </nav>
 
-          {/* MOBILE MENU BUTTON */}
+          {/* MOBILE TOGGLE */}
           <button
-            className="lg:hidden text-slate-900"
+            className="lg:hidden p-2 text-slate-800 hover:bg-slate-100 rounded-none transition-colors focus:outline-none"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle Navigation Menu"
           >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
-
-        {/* MOBILE NAVIGATION */}
-       {isOpen && (
-          <div className="lg:hidden mt-4 border-t border-slate-100 bg-white  min-h-[calc(100vh-50px)] max-h-[calc(100vh-90px)] overflow-y-auto overscroll-contain">
-            <div className="flex flex-col px-6 py-4">
-              <Link
-                href="/"
-                onClick={() => setIsOpen(false)}
-                className="py-3 font-semibold text-slate-800 border-b border-slate-100"
-              >
-                Home
-              </Link>
-
-              <Link
-                href="/about"
-                onClick={() => setIsOpen(false)}
-                className="py-3 font-semibold text-slate-800 border-b border-slate-100"
-              >
-                About Us
-              </Link>
-
-              {/* MOBILE SERVICES */}
-              <div className="border-b border-slate-100">
-                <button
-                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                  className="flex w-full items-center justify-between py-3 font-semibold text-slate-800"
-                >
-                  Services
-                  <ChevronDown
-                    size={18}
-                    className={cn(
-                      "transition-transform duration-300",
-                      mobileServicesOpen && "rotate-180",
-                    )}
-                  />
-                </button>
-
-                {mobileServicesOpen && (
-                  <div className="pb-3 pl-4 flex flex-col gap-3">
-                    <Link
-                      href="/services"
-                      onClick={() => {
-                        setIsOpen(false);
-                        setMobileServicesOpen(false);
-                      }}
-                      className="text-sm text-slate-600 hover:text-primary transition-colors font-medium"
-                    >
-                      All Services
-                    </Link>
-
-                    {/* Mobile Cleaning Services */}
-                    <div className="mt-2">
-                      <h3 className="text-xs font-bold  tracking-[2px] text-primary mb-2">
-                        Cleaning Services
-                      </h3>
-                      {cleaningServices.map((service) => (
-                        <Link
-                          key={service.href}
-                          href={service.href}
-                          onClick={() => {
-                            setIsOpen(false);
-                            setMobileServicesOpen(false);
-                          }}
-                          className="block py-1.5 text-sm text-slate-600 hover:text-primary transition-colors"
-                        >
-                          {service.label}
-                        </Link>
-                      ))}
-                    </div>
-
-                    {/* Mobile Care Services */}
-                    <div className="mt-2">
-                      <h3 className="text-xs font-bold  tracking-[2px] text-primary mb-2">
-                        Care Services
-                      </h3>
-                      {careServices.map((service) => (
-                        <Link
-                          key={service.href}
-                          href={service.href}
-                          onClick={() => {
-                            setIsOpen(false);
-                            setMobileServicesOpen(false);
-                          }}
-                          className="block py-1.5 text-sm text-slate-600 hover:text-primary transition-colors"
-                        >
-                          {service.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              <Link
-                href="/contact"
-                onClick={() => setIsOpen(false)}
-                className="py-3 font-semibold text-slate-800"
-              >
-                Contact Us
-              </Link>
-            </div>
-          </div>
-        )}
       </header>
+
+      {/* FULL-WIDTH GSAP ANIMATED MOBILE OVERLAY PANEL */}
+      <div
+        ref={mobileMenuRef}
+        className="absolute top-full left-0 w-full bg-white backdrop-blur-2xl border-b border-slate-200 shadow-2xl overflow-hidden opacity-0"
+        style={{ height: 0 }}
+      >
+        <div ref={mobileItemsRef} className="container mx-auto  py-10 flex flex-col gap-1">
+          {NAV_ITEMS.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <div key={item.href} className="w-full">
+                <Link
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className={cn(
+                    "block px-4 py-4 font-bold text-sm tracking-[2px]  transition-all duration-200 border-l-2",
+                    isActive 
+                      ? "bg-primary/10 text-primary border-primary" 
+                      : "text-slate-700 border-transparent hover:text-primary hover:bg-slate-50/50"
+                  )}
+                >
+                  {item.label}
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }
