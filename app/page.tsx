@@ -397,8 +397,8 @@ export default function Home() {
       );
     }
   }, [testimonialIndex]);
-const [fbScale, setFbScale] = React.useState(1);
-const fbContainerRef = React.useRef(null);
+const [fbScale, setFbScale] = useState<number>(1);
+const fbContainerRef = useRef<HTMLDivElement>(null);
 
 React.useEffect(() => {
   const update = () => {
@@ -408,11 +408,11 @@ React.useEffect(() => {
       setFbScale(scale);
     }
   };
+  
   update();
   window.addEventListener("resize", update);
   return () => window.removeEventListener("resize", update);
 }, []);
-
 
   return (
     <SmoothScroll>
