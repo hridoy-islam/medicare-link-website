@@ -598,7 +598,7 @@ React.useEffect(() => {
         </section>
 
         {/* ================= CQC TRUST PANEL / REGULATORY REPORT SECTION ================= */}
-        <section className="scroll-section py-28 bg-slate-50/50 border-y border-slate-100">
+        <section className="scroll-section py-28 bg-slate-50 border-y border-slate-100">
           <div className="container mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
               {/* Left Column: Interactive CQC Metric Board */}
@@ -763,7 +763,7 @@ React.useEffect(() => {
         </section>
 
         {/* ================= STANDALONE COMMUNITY UPDATES SECTION ================= */}
-        <section className="relative py-24 md:py-32 bg-white overflow-hidden">
+        <section className="relative py-24 md:py-32 bg-gray-100 overflow-hidden">
           {/* Subtle Background Pattern */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,#f1f5f9_1px,transparent_0)] bg-[size:40px_40px] opacity-50" />
 
